@@ -1,0 +1,72 @@
+.class public final Lhp;
+.super Ljava/lang/Object;
+.source "r8-map-id-c4d1ef3612fae3eff18f16b6ad94229adfb4b31a3d85ce5adcbab5972cc0ce9f"
+
+
+# instance fields
+.field public final a:Liy;
+
+.field public b:Liy;
+
+.field public c:Liy;
+
+.field public d:Liy;
+
+.field public e:Liy;
+
+.field public f:Liy;
+
+.field public g:Liy;
+
+.field public h:Ljava/util/ArrayList;
+
+.field public i:I
+
+.field public j:I
+
+.field public k:F
+
+.field public final l:I
+
+.field public final m:Z
+
+.field public n:Z
+
+.field public o:Z
+
+.field public p:Z
+
+.field public q:Z
+
+
+# direct methods
+.method public constructor <init>(Liy;IZ)V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    const/4 v0, 0x0
+
+    .line 5
+    iput v0, p0, Lhp;->k:F
+
+    .line 6
+    .line 7
+    iput-object p1, p0, Lhp;->a:Liy;
+
+    .line 8
+    .line 9
+    iput p2, p0, Lhp;->l:I
+
+    .line 10
+    .line 11
+    iput-boolean p3, p0, Lhp;->m:Z
+
+    .line 12
+    .line 13
+    return-void
+.end method

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:gravity="center" android:orientation="horizontal" android:background="@drawable/selector_item" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="118.0dp" android:layout_height="58.0dp" android:paddingStart="14.0dp" android:paddingEnd="14.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.AppCompatImageView android:id="@id/icon" android:layout_width="26.0dp" android:layout_height="26.0dp" />
+    <com.google.android.material.textview.MaterialTextView android:textSize="18.0sp" android:textColor="@color/white" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginStart="8.0dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

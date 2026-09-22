@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" android:keepScreenOn="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/video" android:background="@color/black" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.media3.ui.PlayerView android:id="@id/player" android:layout_width="match_parent" android:layout_height="match_parent" app:surface_type="none" style="@style/Player.Live" />
+        <include android:id="@id/widget" android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/view_widget_live" />
+        <include android:layout_gravity="bottom" android:id="@id/control" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/view_control_live" />
+        <include android:id="@id/progress" android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/view_progress" />
+    </FrameLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:id="@id/recycler" android:background="@drawable/shape_live_list" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="match_parent">
+        <com.yimi.android.tv.ui.custom.CustomLiveListView android:id="@id/group" android:padding="12.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" />
+        <com.yimi.android.tv.ui.custom.CustomLiveListView android:id="@id/channel" android:padding="12.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" android:translationX="-12.0dp" />
+        <com.yimi.android.tv.ui.custom.CustomLiveListView android:id="@id/epgData" android:padding="12.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

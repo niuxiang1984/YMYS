@@ -1,0 +1,23 @@
+.class interface abstract Lorg/simpleframework/xml/stream/Attribute;
+.super Ljava/lang/Object;
+.source "r8-map-id-c4d1ef3612fae3eff18f16b6ad94229adfb4b31a3d85ce5adcbab5972cc0ce9f"
+
+
+# virtual methods
+.method public abstract getName()Ljava/lang/String;
+.end method
+
+.method public abstract getPrefix()Ljava/lang/String;
+.end method
+
+.method public abstract getReference()Ljava/lang/String;
+.end method
+
+.method public abstract getSource()Ljava/lang/Object;
+.end method
+
+.method public abstract getValue()Ljava/lang/String;
+.end method
+
+.method public abstract isReserved()Z
+.end method

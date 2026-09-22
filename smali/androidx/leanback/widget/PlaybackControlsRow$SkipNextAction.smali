@@ -1,0 +1,80 @@
+.class public Landroidx/leanback/widget/PlaybackControlsRow$SkipNextAction;
+.super Landroidx/leanback/widget/Action;
+.source "r8-map-id-c4d1ef3612fae3eff18f16b6ad94229adfb4b31a3d85ce5adcbab5972cc0ce9f"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/leanback/widget/PlaybackControlsRow;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "SkipNextAction"
+.end annotation
+
+
+# direct methods
+.method public constructor <init>(Landroid/content/Context;)V
+    .locals 2
+
+    .line 1
+    const v0, 0x7f0b0229
+
+    .line 2
+    .line 3
+    .line 4
+    int-to-long v0, v0
+
+    .line 5
+    invoke-direct {p0, v0, v1}, Landroidx/leanback/widget/Action;-><init>(J)V
+
+    .line 6
+    .line 7
+    .line 8
+    const/16 v0, 0xa
+
+    .line 9
+    .line 10
+    invoke-static {p1, v0}, Landroidx/leanback/widget/PlaybackControlsRow;->getStyledDrawable(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object v0
+
+    .line 14
+    invoke-virtual {p0, v0}, Landroidx/leanback/widget/Action;->setIcon(Landroid/graphics/drawable/Drawable;)V
+
+    .line 15
+    .line 16
+    .line 17
+    const v0, 0x7f130132
+
+    .line 18
+    .line 19
+    .line 20
+    invoke-virtual {p1, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object p1
+
+    .line 24
+    invoke-virtual {p0, p1}, Landroidx/leanback/widget/Action;->setLabel1(Ljava/lang/CharSequence;)V
+
+    .line 25
+    .line 26
+    .line 27
+    const/16 p1, 0x57
+
+    .line 28
+    .line 29
+    invoke-virtual {p0, p1}, Landroidx/leanback/widget/Action;->addKeyCode(I)V
+
+    .line 30
+    .line 31
+    .line 32
+    return-void
+.end method

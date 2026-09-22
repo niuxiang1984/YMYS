@@ -1,0 +1,458 @@
+.class public final Lu20;
+.super Ljava/lang/Object;
+.source "r8-map-id-c4d1ef3612fae3eff18f16b6ad94229adfb4b31a3d85ce5adcbab5972cc0ce9f"
+
+# interfaces
+.implements Ljava/lang/Comparable;
+.implements Ljava/io/Serializable;
+
+
+# static fields
+.field public static final h:Lu20;
+
+.field public static final i:Lu20;
+
+
+# instance fields
+.field public final synthetic c:I
+
+
+# direct methods
+.method static synthetic constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    new-instance v0, Lu20;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    invoke-direct {v0, v1}, Lu20;-><init>(I)V
+
+    .line 5
+    .line 6
+    .line 7
+    sput-object v0, Lu20;->h:Lu20;
+
+    .line 8
+    .line 9
+    new-instance v0, Lu20;
+
+    .line 10
+    .line 11
+    const/4 v1, 0x1
+
+    .line 12
+    invoke-direct {v0, v1}, Lu20;-><init>(I)V
+
+    .line 13
+    .line 14
+    .line 15
+    sput-object v0, Lu20;->i:Lu20;
+
+    .line 16
+    .line 17
+    return-void
+.end method
+
+.method public synthetic constructor <init>(I)V
+    .locals 0
+
+    .line 1
+    iput p1, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lu20;)I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    if-ne p1, p0, :cond_0
+
+    .line 7
+    .line 8
+    const/4 p0, 0x0
+
+    .line 9
+    goto :goto_0
+
+    .line 10
+    :cond_0
+    const/4 p0, -0x1
+
+    .line 11
+    :goto_0
+    return p0
+
+    .line 12
+    :pswitch_0
+    if-ne p1, p0, :cond_1
+
+    .line 13
+    .line 14
+    const/4 p0, 0x0
+
+    .line 15
+    goto :goto_1
+
+    .line 16
+    :cond_1
+    const/4 p0, 0x1
+
+    .line 17
+    :goto_1
+    return p0
+
+    .line 18
+    nop
+
+    .line 19
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final b(Ljava/lang/StringBuilder;)V
+    .locals 0
+
+    .line 1
+    iget p0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch p0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    const-string p0, "(-\u221e"
+
+    .line 7
+    .line 8
+    invoke-virtual {p1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 9
+    .line 10
+    .line 11
+    return-void
+
+    .line 12
+    :pswitch_0
+    new-instance p0, Ljava/lang/AssertionError;
+
+    .line 13
+    .line 14
+    invoke-direct {p0}, Ljava/lang/AssertionError;-><init>()V
+
+    .line 15
+    .line 16
+    .line 17
+    throw p0
+
+    .line 18
+    nop
+
+    .line 19
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final c(Ljava/lang/StringBuilder;)V
+    .locals 0
+
+    .line 1
+    iget p0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch p0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance p0, Ljava/lang/AssertionError;
+
+    .line 7
+    .line 8
+    invoke-direct {p0}, Ljava/lang/AssertionError;-><init>()V
+
+    .line 9
+    .line 10
+    .line 11
+    throw p0
+
+    .line 12
+    :pswitch_0
+    const-string p0, "+\u221e)"
+
+    .line 13
+    .line 14
+    invoke-virtual {p1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 15
+    .line 16
+    .line 17
+    return-void
+
+    .line 18
+    nop
+
+    .line 19
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final compareTo(Ljava/lang/Object;)I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    check-cast p1, Lu20;
+
+    .line 7
+    .line 8
+    if-ne p1, p0, :cond_0
+
+    .line 9
+    .line 10
+    const/4 p0, 0x0
+
+    .line 11
+    goto :goto_0
+
+    .line 12
+    :cond_0
+    const/4 p0, -0x1
+
+    .line 13
+    :goto_0
+    return p0
+
+    .line 14
+    :pswitch_0
+    check-cast p1, Lu20;
+
+    .line 15
+    .line 16
+    if-ne p1, p0, :cond_1
+
+    .line 17
+    .line 18
+    const/4 p0, 0x0
+
+    .line 19
+    goto :goto_1
+
+    .line 20
+    :cond_1
+    const/4 p0, 0x1
+
+    .line 21
+    :goto_1
+    return p0
+
+    .line 22
+    nop
+
+    .line 23
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final d()Z
+    .locals 0
+
+    .line 1
+    iget p0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch p0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    const/4 p0, 0x1
+
+    .line 7
+    return p0
+
+    .line 8
+    :pswitch_0
+    const/4 p0, 0x0
+
+    .line 9
+    return p0
+
+    .line 10
+    nop
+
+    .line 11
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 2
+
+    .line 1
+    instance-of v0, p1, Lu20;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    if-eqz v0, :cond_0
+
+    .line 5
+    .line 6
+    check-cast p1, Lu20;
+
+    .line 7
+    .line 8
+    :try_start_0
+    invoke-virtual {p0, p1}, Lu20;->a(Lu20;)I
+
+    .line 9
+    .line 10
+    .line 11
+    move-result p0
+    :try_end_0
+    .catch Ljava/lang/ClassCastException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 12
+    if-nez p0, :cond_0
+
+    .line 13
+    .line 14
+    const/4 p0, 0x1
+
+    .line 15
+    return p0
+
+    .line 16
+    :catch_0
+    :cond_0
+    return v1
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+
+    .line 7
+    .line 8
+    .line 9
+    move-result p0
+
+    .line 10
+    return p0
+
+    .line 11
+    :pswitch_0
+    invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p0
+
+    .line 15
+    return p0
+
+    .line 16
+    nop
+
+    .line 17
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    iget p0, p0, Lu20;->c:I
+
+    .line 2
+    .line 3
+    packed-switch p0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    const-string p0, "-\u221e"
+
+    .line 7
+    .line 8
+    return-object p0
+
+    .line 9
+    :pswitch_0
+    const-string p0, "+\u221e"
+
+    .line 10
+    .line 11
+    return-object p0
+
+    .line 12
+    nop
+
+    .line 13
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method

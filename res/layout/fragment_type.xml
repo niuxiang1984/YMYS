@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@id/swipeLayout" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.yimi.android.tv.ui.custom.ProgressLayout android:id="@id/progressLayout" android:layout_width="match_parent" android:layout_height="match_parent">
+        <com.yimi.android.tv.ui.custom.CustomVerticalGridView android:id="@id/recycler" android:paddingTop="10.0dp" android:paddingBottom="24.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="24.0dp" android:paddingEnd="24.0dp" app:focusOutEnd="false" app:focusOutFront="true" />
+    </com.yimi.android.tv.ui.custom.ProgressLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

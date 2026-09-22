@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="24.0dp" android:paddingTop="24.0dp" android:paddingRight="24.0dp" android:paddingBottom="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="24.0dp">
+        <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/white" android:id="@id/title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/dialog_select_edition" android:layout_weight="1.0" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <com.yimi.android.tv.ui.custom.CustomRecyclerView android:id="@id/recycler" android:paddingBottom="24.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:overScrollMode="never" android:paddingStart="24.0dp" android:paddingEnd="24.0dp" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" app:maxHeight="204.0dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

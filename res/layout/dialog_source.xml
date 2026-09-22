@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/shape_dialog_source" android:padding="18.0dp" android:paddingBottom="0.0dp" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dp">
+        <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@id/badge" android:background="@drawable/shape_tmdb_badge" android:layout_width="wrap_content" android:layout_height="24.0dp" android:text="@string/play_change" android:paddingStart="10.0dp" android:paddingEnd="10.0dp" />
+        <androidx.leanback.widget.HorizontalGridView android:id="@id/keywordRow" android:nextFocusDown="@id/siteRecycler" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:overScrollMode="never" android:layout_marginStart="10.0dp" app:focusOutEnd="false" app:focusOutFront="true" />
+        <TextView android:textSize="11.0sp" android:textColor="#59ffffff" android:id="@id/resultCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12.0dp" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/siteLayout" android:visibility="invisible" android:clipChildren="true" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="32.0dp" android:layout_marginBottom="12.0dp" android:baselineAligned="false">
+        <FrameLayout android:id="@id/homeBtn" android:background="@drawable/selector_home_logo_source" android:focusable="true" android:focusableInTouchMode="true" android:nextFocusRight="@id/siteRecycler" android:nextFocusUp="@id/keywordRow" android:nextFocusDown="@id/recycler" android:clickable="true" android:layout_width="26.0dp" android:layout_height="26.0dp">
+            <androidx.appcompat.widget.AppCompatImageView android:layout_gravity="center" android:layout_width="16.0dp" android:layout_height="16.0dp" android:src="@drawable/ic_home_logo" />
+        </FrameLayout>
+        <FrameLayout android:clipChildren="true" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginStart="6.0dp">
+            <androidx.leanback.widget.HorizontalGridView android:id="@id/siteRecycler" android:paddingTop="3.0dp" android:paddingBottom="3.0dp" android:nextFocusLeft="@id/homeBtn" android:nextFocusUp="@id/keywordRow" android:nextFocusDown="@id/recycler" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="4.0dp" android:paddingEnd="24.0dp" app:focusOutEnd="false" app:focusOutFront="true" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dp">
+        <View android:background="@drawable/shape_red_bar" android:layout_width="3.0dp" android:layout_height="14.0dp" />
+        <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="#99ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/play_change_result" android:layout_marginStart="8.0dp" />
+    </LinearLayout>
+    <FrameLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="212.0dp">
+        <com.yimi.android.tv.ui.custom.TypingDotsView android:layout_gravity="center|top" android:id="@id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="86.0dp" />
+        <TextView android:textSize="14.0sp" android:textColor="#59ffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/empty" android:padding="16.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/play_change_empty" />
+        <androidx.leanback.widget.HorizontalGridView android:id="@id/recycler" android:paddingTop="6.0dp" android:paddingBottom="0.0dp" android:visibility="gone" android:nextFocusUp="@id/siteRecycler" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="8.0dp" android:paddingEnd="2.0dp" app:focusOutEnd="false" app:focusOutFront="true" />
+    </FrameLayout>
+</LinearLayout>

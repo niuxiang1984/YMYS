@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.google.android.material.textview.MaterialTextView android:id="@id/player" android:nextFocusLeft="@id/video" android:text="@string/play_exo" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/decode" android:text="@string/play_decode" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/reset" android:text="@string/play_reset" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.yimi.android.tv.ui.custom.CustomUpDownView android:id="@id/speed" android:text="@string/play_speed" android:layout_marginEnd="8.0dp" android:fontFeatureSettings="tnum" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/scale" android:text="@string/play_scale" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.yimi.android.tv.ui.custom.CustomUpDownView android:id="@id/text" android:tag="3" android:text="@string/play_track_text" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/track" android:tag="0" android:nextFocusRight="@id/player" android:text="@string/play_track" style="@style/Control" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</HorizontalScrollView>

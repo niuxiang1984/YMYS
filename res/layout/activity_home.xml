@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:clipChildren="false" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:id="@id/nativeContent" android:paddingTop="80.0dp" android:clipChildren="false" android:clipToPadding="true" android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.leanback.widget.HorizontalGridView android:id="@id/typeRecycler" android:background="@android:color/transparent" android:paddingTop="4.0dp" android:paddingBottom="8.0dp" android:visibility="gone" android:nextFocusUp="@id/title" android:nextFocusDown="@id/recycler" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="24.0dp" android:paddingEnd="24.0dp" app:focusOutEnd="false" app:focusOutFront="false" />
+        <com.yimi.android.tv.ui.custom.ProgressLayout android:id="@id/progressLayout" android:paddingTop="4.0dp" android:clipChildren="true" android:clipToPadding="true" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+            <androidx.leanback.widget.VerticalGridView android:id="@id/recycler" android:paddingTop="12.0dp" android:paddingBottom="24.0dp" android:nextFocusUp="@id/typeRecycler" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="24.0dp" android:paddingEnd="24.0dp" app:focusOutEnd="true" app:focusOutFront="true" />
+        </com.yimi.android.tv.ui.custom.ProgressLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <FrameLayout android:id="@id/webOverlay" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" />
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/toolbar" android:paddingTop="24.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:animateLayoutChanges="true" android:paddingStart="24.0dp" android:paddingEnd="24.0dp">
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/logo" android:layout_width="48.0dp" android:layout_height="48.0dp" android:src="@drawable/ic_logo" android:layout_marginEnd="12.0dp" />
+        <com.yimi.android.tv.ui.custom.CustomTitleView android:textSize="24.0sp" android:textColor="@color/white" android:ellipsize="marquee" android:id="@id/title" android:focusable="false" android:nextFocusDown="@id/typeRecycler" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/app_name" android:singleLine="true" android:layout_weight="1.0" android:layout_marginEnd="16.0dp" />
+        <com.google.android.material.textview.MaterialTextView android:textSize="24.0sp" android:textColor="@color/white" android:id="@id/clock" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

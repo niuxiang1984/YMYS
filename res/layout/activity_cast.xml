@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/video" android:background="@color/black" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:keepScreenOn="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.media3.ui.PlayerView android:id="@id/player" android:layout_width="match_parent" android:layout_height="match_parent" app:surface_type="none" style="@style/Player.Vod" />
+    <include android:id="@id/widget" android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/view_widget_cast" />
+    <include android:layout_gravity="bottom" android:id="@id/control" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/view_control_cast" />
+    <include android:id="@id/progress" android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/view_progress" />
+</FrameLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/prev" android:background="@drawable/selector_control_circle" android:nextFocusLeft="@id/ending" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_play_prev" android:contentDescription="@string/play_prev" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/next" android:background="@drawable/selector_control_circle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_play_next" android:contentDescription="@string/play_next" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/episodes" android:text="@string/play_episodes" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/parse" android:visibility="gone" android:text="@string/parse" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/player" android:text="@string/play_exo" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/decode" android:text="@string/play_decode" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/reset" android:text="@string/play_reset" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/replay" android:text="@string/play_replay" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/repeat" android:text="@string/play_repeat" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.yimi.android.tv.ui.custom.CustomUpDownView android:id="@id/speed" android:text="@string/play_speed" android:layout_marginEnd="8.0dp" android:fontFeatureSettings="tnum" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/scale" android:text="@string/play_scale" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.yimi.android.tv.ui.custom.CustomUpDownView android:id="@id/text" android:tag="3" android:text="@string/play_track_text" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/track" android:tag="0" android:text="@string/play_track" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/danmaku" android:visibility="gone" android:text="@string/danmaku" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/edition" android:visibility="gone" android:text="@string/play_edition" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.google.android.material.textview.MaterialTextView android:id="@id/chapter" android:visibility="gone" android:text="@string/play_chapter" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.yimi.android.tv.ui.custom.CustomUpDownView android:id="@id/opening" android:text="@string/play_op" android:layout_marginEnd="8.0dp" style="@style/Control" />
+        <com.yimi.android.tv.ui.custom.CustomUpDownView android:id="@id/ending" android:nextFocusRight="@id/next" android:text="@string/play_ed" style="@style/Control" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</HorizontalScrollView>

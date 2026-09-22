@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yimi.android.tv.ui.custom.CustomLeftRightLayout android:orientation="vertical" android:background="@drawable/selector_live" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/text" android:ellipsize="marquee" android:id="@id/title" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <com.google.android.material.textview.MaterialTextView android:textSize="14.0sp" android:textColor="@color/text" android:ellipsize="marquee" android:id="@id/time" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+</com.yimi.android.tv.ui.custom.CustomLeftRightLayout>

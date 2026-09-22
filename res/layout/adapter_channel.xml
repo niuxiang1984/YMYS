@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yimi.android.tv.ui.custom.CustomLeftRightLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/selector_live" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/text" android:id="@id/number" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="12.0dp" android:fontFeatureSettings="tnum" />
+    <androidx.appcompat.widget.AppCompatImageView android:id="@id/logo" android:visibility="gone" android:layout_width="48.0dp" android:layout_height="36.0dp" android:layout_marginEnd="12.0dp" />
+    <com.google.android.material.textview.MaterialTextView android:textSize="16.0sp" android:textColor="@color/text" android:ellipsize="marquee" android:id="@id/name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+</com.yimi.android.tv.ui.custom.CustomLeftRightLayout>
