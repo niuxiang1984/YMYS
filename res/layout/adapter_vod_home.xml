@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/item" android:background="@drawable/selector_vod_home_item_background" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:baselineAligned="false">
+        <TextView android:textSize="18.0sp" android:textColor="@color/selector_site_item_text" android:ellipsize="marquee" android:gravity="center" android:id="@id/text" android:focusable="false" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <CheckBox android:enabled="false" android:id="@id/check" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:duplicateParentState="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:button="@drawable/check_circle" android:layout_marginStart="12.0dip" app:buttonTint="@color/selector_vod_home_check" />
+    </LinearLayout>
+    <View android:id="@id/line" android:background="@drawable/shape_line_tapered" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:layout_marginHorizontal="24.0dip" />
+</LinearLayout>

@@ -1,0 +1,22 @@
+.class public interface abstract Lfi/iki/elonen/NanoHTTPD$TempFileManager;
+.super Ljava/lang/Object;
+.source "r8-map-id-00a0c95fd430f489eb9124c596f87c5b95e16a2b400a763bc4bdd346b8830e5d"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lfi/iki/elonen/NanoHTTPD;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "TempFileManager"
+.end annotation
+
+
+# virtual methods
+.method public abstract clear()V
+.end method
+
+.method public abstract createTempFile(Ljava/lang/String;)Lfi/iki/elonen/NanoHTTPD$TempFile;
+.end method

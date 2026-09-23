@@ -1,0 +1,85 @@
+.class public Lcom/thegrizzlylabs/sardineandroid/model/Keepalive;
+.super Ljava/lang/Object;
+.source "r8-map-id-00a0c95fd430f489eb9124c596f87c5b95e16a2b400a763bc4bdd346b8830e5d"
+
+
+# annotations
+.annotation runtime Lorg/simpleframework/xml/Namespace;
+    prefix = "D"
+    reference = "DAV:"
+.end annotation
+
+.annotation runtime Lorg/simpleframework/xml/Root;
+.end annotation
+
+
+# instance fields
+.field private content:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
+            "Ljava/io/Serializable;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation runtime Lorg/simpleframework/xml/ElementList;
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+
+# virtual methods
+.method public getContent()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Ljava/io/Serializable;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    iget-object v0, p0, Lcom/thegrizzlylabs/sardineandroid/model/Keepalive;->content:Ljava/util/List;
+
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
+
+    .line 4
+    .line 5
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 6
+    .line 7
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 8
+    .line 9
+    .line 10
+    iput-object v0, p0, Lcom/thegrizzlylabs/sardineandroid/model/Keepalive;->content:Ljava/util/List;
+
+    .line 11
+    .line 12
+    :cond_0
+    iget-object p0, p0, Lcom/thegrizzlylabs/sardineandroid/model/Keepalive;->content:Ljava/util/List;
+
+    .line 13
+    .line 14
+    return-object p0
+.end method

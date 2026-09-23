@@ -1,0 +1,90 @@
+version: 2.10.0
+apkFileName: new_556.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+  tag: null
+sdkInfo:
+  minSdkVersion: 24
+  targetSdkVersion: 28
+packageInfo:
+  forcedPackageId: 127
+  renameManifestPackage: null
+versionInfo:
+  versionCode: 556
+  versionName: 5.5.6
+resourcesAreCompressed: false
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  DebugProbesKt.bin: 8
+  OSGI-INF/org.jupnp.OSGiUpnpServiceConfiguration.xml: 8
+  OSGI-INF/org.jupnp.OSGiUpnpServiceConfigurationEnabler.xml: 8
+  OSGI-INF/org.jupnp.UpnpServiceImpl.xml: 8
+  OSGI-INF/org.jupnp.util.SpecificationViolationReporterConfig.xml: 8
+  OSGI-INF/metatype/org.jupnp.upnpservice.xml: 8
+  OSGI-INF/metatype/org.jupnp.util.xml: 8
+  core/java_features_proto-descriptor-set.proto.bin: 8
+  google/protobuf/any.proto: 8
+  google/protobuf/api.proto: 8
+  google/protobuf/descriptor.proto: 8
+  google/protobuf/duration.proto: 8
+  google/protobuf/empty.proto: 8
+  google/protobuf/field_mask.proto: 8
+  google/protobuf/source_context.proto: 8
+  google/protobuf/struct.proto: 8
+  google/protobuf/timestamp.proto: 8
+  google/protobuf/type.proto: 8
+  google/protobuf/wrappers.proto: 8
+  org/bouncycastle/pqc/crypto/picnic/lowmcL1.bin.properties: 8
+  org/bouncycastle/pqc/crypto/picnic/lowmcL3.bin.properties: 8
+  org/bouncycastle/pqc/crypto/picnic/lowmcL5.bin.properties: 8
+  org/bouncycastle/x509/CertPathReviewerMessages.properties: 8
+  org/bouncycastle/x509/CertPathReviewerMessages_de.properties: 8
+  org/jupnp/schemas/xml.xsd: 8
+  org/jupnp/support/avtransport/metadata-1.01-avt.xsd: 8
+  org/jupnp/support/renderingcontrol/metadata-1.0-rcs.xsd: 8
+  org/mozilla/javascript/resources/Messages.properties: 8
+  org/mozilla/javascript/resources/Messages_en.properties: 8
+  org/mozilla/javascript/resources/Messages_fr.properties: 8
+  org/mozilla/javascript/resources/Messages_zh_CN.properties: 8
+doNotCompress:
+- resources.arsc
+- assets/libmitv.so
+- assets/dexopt/baseline.prof
+- assets/dexopt/baseline.profm
+- imy
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_bz2.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_ctypes.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_datetime.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_lzma.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_random.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_sha512.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/_struct.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/binascii.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/math.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/mmap.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/zlib.cpython-310.so
+- assets/chaquopy/bootstrap-native/armeabi-v7a/java/chaquopy.so
+- lib/armeabi-v7a/libavif_android.so
+- lib/armeabi-v7a/libchaquopy_java.so
+- lib/armeabi-v7a/libcrypto_chaquopy.so
+- lib/armeabi-v7a/libcrypto_python.so
+- lib/armeabi-v7a/libjpa.so
+- lib/armeabi-v7a/libmitv.so
+- lib/armeabi-v7a/libp2p.so
+- lib/armeabi-v7a/libp3p.so
+- lib/armeabi-v7a/libpl_droidsonroids_gif.so
+- lib/armeabi-v7a/libpython3.10.so
+- lib/armeabi-v7a/libquickjs-android-wrapper.so
+- lib/armeabi-v7a/librtmp-jni.so
+- lib/armeabi-v7a/libsqlite3_chaquopy.so
+- lib/armeabi-v7a/libsqlite3_python.so
+- lib/armeabi-v7a/libssl_chaquopy.so
+- lib/armeabi-v7a/libssl_python.so
+- lib/armeabi-v7a/libxl_stat.so
+- lib/armeabi-v7a/libxl_thunder_sdk.so
+- webp
+- png
+- ogg

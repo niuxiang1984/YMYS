@@ -1,0 +1,296 @@
+.class public Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;
+.super Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContext;
+.source "r8-map-id-00a0c95fd430f489eb9124c596f87c5b95e16a2b400a763bc4bdd346b8830e5d"
+
+
+# instance fields
+.field private cipherList:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
+            "Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContextType;->SMB2_ENCRYPTION_CAPABILITIES:Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContextType;
+
+    .line 2
+    .line 3
+    invoke-direct {p0, v0}, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContext;-><init>(Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContextType;)V
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 7
+    .line 8
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 9
+    .line 10
+    .line 11
+    iput-object v0, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 12
+    .line 13
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/util/List;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;",
+            ">;)V"
+        }
+    .end annotation
+
+    .line 14
+    sget-object v0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContextType;->SMB2_ENCRYPTION_CAPABILITIES:Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContextType;
+
+    invoke-direct {p0, v0}, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContext;-><init>(Lcom/hierynomus/mssmb2/messages/negotiate/SMB2NegotiateContextType;)V
+
+    .line 15
+    iput-object p1, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getCipherList()Ljava/util/List;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    iget-object p0, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public readContext(Lcom/hierynomus/smb/SMBBuffer;I)V
+    .locals 6
+
+    .line 1
+    invoke-virtual {p1}, Lcom/hierynomus/protocol/commons/buffer/Buffer;->readUInt16()I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p2
+
+    .line 5
+    const/4 v0, 0x0
+
+    .line 6
+    :goto_0
+    if-ge v0, p2, :cond_0
+
+    .line 7
+    .line 8
+    iget-object v1, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 9
+    .line 10
+    invoke-virtual {p1}, Lcom/hierynomus/protocol/commons/buffer/Buffer;->readUInt16()I
+
+    .line 11
+    .line 12
+    .line 13
+    move-result v2
+
+    .line 14
+    int-to-long v2, v2
+
+    .line 15
+    const-class v4, Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;
+
+    .line 16
+    .line 17
+    const/4 v5, 0x0
+
+    .line 18
+    invoke-static {v2, v3, v4, v5}, Lcom/hierynomus/protocol/commons/EnumWithValue$EnumUtils;->valueOf(JLjava/lang/Class;Lcom/hierynomus/protocol/commons/EnumWithValue;)Lcom/hierynomus/protocol/commons/EnumWithValue;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v2
+
+    .line 22
+    check-cast v2, Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;
+
+    .line 23
+    .line 24
+    invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 25
+    .line 26
+    .line 27
+    add-int/lit8 v0, v0, 0x1
+
+    .line 28
+    .line 29
+    goto :goto_0
+
+    .line 30
+    :cond_0
+    return-void
+.end method
+
+.method public writeContext(Lcom/hierynomus/smb/SMBBuffer;)I
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_1
+
+    .line 4
+    .line 5
+    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v0
+
+    .line 9
+    if-nez v0, :cond_1
+
+    .line 10
+    .line 11
+    iget-object v0, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 12
+    .line 13
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    invoke-virtual {p1, v0}, Lcom/hierynomus/protocol/commons/buffer/Buffer;->putUInt16(I)Lcom/hierynomus/protocol/commons/buffer/Buffer;
+
+    .line 18
+    .line 19
+    .line 20
+    iget-object v0, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 21
+    .line 22
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v0
+
+    .line 26
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 27
+    .line 28
+    .line 29
+    move-result v1
+
+    .line 30
+    if-eqz v1, :cond_0
+
+    .line 31
+    .line 32
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object v1
+
+    .line 36
+    check-cast v1, Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;
+
+    .line 37
+    .line 38
+    invoke-virtual {v1}, Lcom/hierynomus/mssmb2/SMB3EncryptionCipher;->getValue()J
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-wide v1
+
+    .line 42
+    long-to-int v1, v1
+
+    .line 43
+    invoke-virtual {p1, v1}, Lcom/hierynomus/protocol/commons/buffer/Buffer;->putUInt16(I)Lcom/hierynomus/protocol/commons/buffer/Buffer;
+
+    .line 44
+    .line 45
+    .line 46
+    goto :goto_0
+
+    .line 47
+    :cond_0
+    iget-object p0, p0, Lcom/hierynomus/mssmb2/messages/negotiate/SMB2EncryptionCapabilities;->cipherList:Ljava/util/List;
+
+    .line 48
+    .line 49
+    invoke-interface {p0}, Ljava/util/List;->size()I
+
+    .line 50
+    .line 51
+    .line 52
+    move-result p0
+
+    .line 53
+    mul-int/lit8 p0, p0, 0x2
+
+    .line 54
+    .line 55
+    add-int/lit8 p0, p0, 0x2
+
+    .line 56
+    .line 57
+    return p0
+
+    .line 58
+    :cond_1
+    const-string p0, "Cannot serialize an empty or null cipherList"
+
+    .line 59
+    .line 60
+    invoke-static {p0}, Lv62;->q(Ljava/lang/String;)V
+
+    .line 61
+    .line 62
+    .line 63
+    const/4 p0, 0x0
+
+    .line 64
+    return p0
+.end method

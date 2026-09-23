@@ -1,0 +1,521 @@
+.class public final synthetic Le80;
+.super Ljava/lang/Object;
+.source "r8-map-id-00a0c95fd430f489eb9124c596f87c5b95e16a2b400a763bc4bdd346b8830e5d"
+
+# interfaces
+.implements Luf1;
+.implements Lsv0;
+
+
+# instance fields
+.field public final synthetic c:I
+
+
+# direct methods
+.method public synthetic constructor <init>(I)V
+    .locals 0
+
+    .line 1
+    iput p1, p0, Le80;->c:I
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public static bridge synthetic b()Landroid/graphics/ColorSpace$Named;
+    .locals 1
+
+    .line 1
+    sget-object v0, Landroid/graphics/ColorSpace$Named;->DISPLAY_P3:Landroid/graphics/ColorSpace$Named;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public static bridge synthetic c(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/ColorSpace;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Landroid/graphics/BitmapFactory$Options;->inPreferredColorSpace:Landroid/graphics/ColorSpace;
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method public static bridge synthetic d()Landroid/graphics/ColorSpace$Named;
+    .locals 1
+
+    .line 1
+    sget-object v0, Landroid/graphics/ColorSpace$Named;->SRGB:Landroid/graphics/ColorSpace$Named;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public a()Ljava/lang/reflect/Constructor;
+    .locals 4
+
+    .line 1
+    iget p0, p0, Le80;->c:I
+
+    .line 2
+    .line 3
+    const/4 v0, 0x0
+
+    .line 4
+    const-class v1, Lxo0;
+
+    .line 5
+    .line 6
+    packed-switch p0, :pswitch_data_0
+
+    .line 7
+    .line 8
+    .line 9
+    const-string p0, "androidx.media3.decoder.midi.MidiExtractor"
+
+    .line 10
+    .line 11
+    invoke-static {p0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p0
+
+    .line 15
+    invoke-virtual {p0, v1}, Ljava/lang/Class;->asSubclass(Ljava/lang/Class;)Ljava/lang/Class;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object p0
+
+    .line 19
+    invoke-virtual {p0, v0}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p0
+
+    .line 23
+    return-object p0
+
+    .line 24
+    :pswitch_0
+    sget-object p0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+
+    .line 25
+    .line 26
+    const-string v2, "androidx.media3.decoder.flac.FlacLibrary"
+
+    .line 27
+    .line 28
+    invoke-static {v2}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+
+    .line 29
+    .line 30
+    .line 31
+    move-result-object v2
+
+    .line 32
+    const-string v3, "isAvailable"
+
+    .line 33
+    .line 34
+    invoke-virtual {v2, v3, v0}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object v2
+
+    .line 38
+    invoke-virtual {v2, v0, v0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v2
+
+    .line 42
+    invoke-virtual {p0, v2}, Ljava/lang/Boolean;->equals(Ljava/lang/Object;)Z
+
+    .line 43
+    .line 44
+    .line 45
+    move-result p0
+
+    .line 46
+    if-eqz p0, :cond_0
+
+    .line 47
+    .line 48
+    const-string p0, "androidx.media3.decoder.flac.FlacExtractor"
+
+    .line 49
+    .line 50
+    invoke-static {p0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+
+    .line 51
+    .line 52
+    .line 53
+    move-result-object p0
+
+    .line 54
+    invoke-virtual {p0, v1}, Ljava/lang/Class;->asSubclass(Ljava/lang/Class;)Ljava/lang/Class;
+
+    .line 55
+    .line 56
+    .line 57
+    move-result-object p0
+
+    .line 58
+    sget-object v0, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+
+    .line 59
+    .line 60
+    filled-new-array {v0}, [Ljava/lang/Class;
+
+    .line 61
+    .line 62
+    .line 63
+    move-result-object v0
+
+    .line 64
+    invoke-virtual {p0, v0}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+
+    .line 65
+    .line 66
+    .line 67
+    move-result-object v0
+
+    .line 68
+    :cond_0
+    return-object v0
+
+    .line 69
+    :pswitch_data_0
+    .packed-switch 0x12
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public apply(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 3
+
+    .line 1
+    check-cast p1, Ljd3;
+
+    .line 2
+    .line 3
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance p0, Landroid/os/Bundle;
+
+    .line 7
+    .line 8
+    invoke-direct {p0}, Landroid/os/Bundle;-><init>()V
+
+    .line 9
+    .line 10
+    .line 11
+    sget-object v0, Ljd3;->e:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    iget-object p1, p1, Ljd3;->b:Lrh2;
+
+    .line 14
+    .line 15
+    new-instance v1, Ljava/util/ArrayList;
+
+    .line 16
+    .line 17
+    iget v2, p1, Lrh2;->j:I
+
+    .line 18
+    .line 19
+    invoke-direct {v1, v2}, Ljava/util/ArrayList;-><init>(I)V
+
+    .line 20
+    .line 21
+    .line 22
+    const/4 v2, 0x0
+
+    .line 23
+    invoke-virtual {p1, v2}, Lp61;->n(I)Lm61;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object p1
+
+    .line 27
+    :goto_0
+    invoke-virtual {p1}, Lj0;->hasNext()Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result v2
+
+    .line 31
+    if-eqz v2, :cond_0
+
+    .line 32
+    .line 33
+    invoke-virtual {p1}, Lj0;->next()Ljava/lang/Object;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object v2
+
+    .line 37
+    check-cast v2, Lid3;
+
+    .line 38
+    .line 39
+    invoke-virtual {v2}, Lid3;->d()Landroid/os/Bundle;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object v2
+
+    .line 43
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 44
+    .line 45
+    .line 46
+    goto :goto_0
+
+    .line 47
+    :cond_0
+    invoke-virtual {p0, v0, v1}, Landroid/os/Bundle;->putParcelableArrayList(Ljava/lang/String;Ljava/util/ArrayList;)V
+
+    .line 48
+    .line 49
+    .line 50
+    return-object p0
+.end method
+
+.method public invoke(Ljava/lang/Object;)V
+    .locals 0
+
+    .line 1
+    iget p0, p0, Le80;->c:I
+
+    .line 2
+    .line 3
+    check-cast p1, Lf6;
+
+    .line 4
+    .line 5
+    packed-switch p0, :pswitch_data_0
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 9
+    .line 10
+    .line 11
+    return-void
+
+    .line 12
+    :pswitch_0
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 13
+    .line 14
+    .line 15
+    return-void
+
+    .line 16
+    :pswitch_1
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17
+    .line 18
+    .line 19
+    return-void
+
+    .line 20
+    :pswitch_2
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 21
+    .line 22
+    .line 23
+    return-void
+
+    .line 24
+    :pswitch_3
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 25
+    .line 26
+    .line 27
+    return-void
+
+    .line 28
+    :pswitch_4
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 29
+    .line 30
+    .line 31
+    return-void
+
+    .line 32
+    :pswitch_5
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33
+    .line 34
+    .line 35
+    return-void
+
+    .line 36
+    :pswitch_6
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 37
+    .line 38
+    .line 39
+    return-void
+
+    .line 40
+    :pswitch_7
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 41
+    .line 42
+    .line 43
+    return-void
+
+    .line 44
+    :pswitch_8
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 45
+    .line 46
+    .line 47
+    return-void
+
+    .line 48
+    :pswitch_9
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 49
+    .line 50
+    .line 51
+    return-void
+
+    .line 52
+    :pswitch_a
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 53
+    .line 54
+    .line 55
+    return-void
+
+    .line 56
+    :pswitch_b
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 57
+    .line 58
+    .line 59
+    return-void
+
+    .line 60
+    :pswitch_c
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 61
+    .line 62
+    .line 63
+    return-void
+
+    .line 64
+    :pswitch_d
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 65
+    .line 66
+    .line 67
+    return-void
+
+    .line 68
+    :pswitch_e
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 69
+    .line 70
+    .line 71
+    return-void
+
+    .line 72
+    :pswitch_f
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 73
+    .line 74
+    .line 75
+    return-void
+
+    .line 76
+    :pswitch_10
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 77
+    .line 78
+    .line 79
+    return-void
+
+    .line 80
+    nop
+
+    .line 81
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_10
+        :pswitch_f
+        :pswitch_e
+        :pswitch_d
+        :pswitch_c
+        :pswitch_b
+        :pswitch_a
+        :pswitch_9
+        :pswitch_8
+        :pswitch_7
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

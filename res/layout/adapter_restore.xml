@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.google.android.material.textview.MaterialTextView android:textSize="18.0sp" android:textColor="@color/selector_site_item_text" android:ellipsize="middle" android:gravity="center" android:id="@id/text" android:background="@drawable/selector_site_item_background" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="40.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/delete" android:background="@drawable/selector_config_delete_background" android:padding="8.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/ic_setting_delete" android:layout_marginStart="12.0dip" app:tint="@color/selector_config_item_delete" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View android:id="@id/line" android:background="@drawable/shape_line_tapered" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="8.0dip" android:layout_marginHorizontal="24.0dip" />
+</androidx.appcompat.widget.LinearLayoutCompat>

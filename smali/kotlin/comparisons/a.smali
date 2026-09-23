@@ -1,0 +1,107 @@
+.class public final synthetic Lkotlin/comparisons/a;
+.super Ljava/lang/Object;
+.source "r8-map-id-00a0c95fd430f489eb9124c596f87c5b95e16a2b400a763bc4bdd346b8830e5d"
+
+# interfaces
+.implements Ljava/util/Comparator;
+
+
+# instance fields
+.field public final synthetic c:I
+
+.field public final synthetic h:Ljava/lang/Object;
+
+
+# direct methods
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
+    .locals 0
+
+    .line 1
+    iput p2, p0, Lkotlin/comparisons/a;->c:I
+
+    .line 2
+    .line 3
+    iput-object p1, p0, Lkotlin/comparisons/a;->h:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public final compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lkotlin/comparisons/a;->c:I
+
+    .line 2
+    .line 3
+    iget-object p0, p0, Lkotlin/comparisons/a;->h:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    packed-switch v0, :pswitch_data_0
+
+    .line 6
+    .line 7
+    .line 8
+    check-cast p0, [Lkotlin/jvm/functions/Function1;
+
+    .line 9
+    .line 10
+    invoke-static {p0, p1, p2}, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt;->d([Lkotlin/jvm/functions/Function1;Ljava/lang/Object;Ljava/lang/Object;)I
+
+    .line 11
+    .line 12
+    .line 13
+    move-result p0
+
+    .line 14
+    return p0
+
+    .line 15
+    :pswitch_0
+    check-cast p0, Ljava/util/Comparator;
+
+    .line 16
+    .line 17
+    invoke-static {p1, p2, p0}, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt;->a(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Comparator;)I
+
+    .line 18
+    .line 19
+    .line 20
+    move-result p0
+
+    .line 21
+    return p0
+
+    .line 22
+    :pswitch_1
+    check-cast p0, Ljava/util/Comparator;
+
+    .line 23
+    .line 24
+    invoke-static {p1, p2, p0}, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt;->e(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Comparator;)I
+
+    .line 25
+    .line 26
+    .line 27
+    move-result p0
+
+    .line 28
+    return p0
+
+    .line 29
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method

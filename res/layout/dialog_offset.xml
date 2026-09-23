@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="16.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="24.0dip" android:paddingEnd="24.0dip">
+        <com.google.android.material.textview.MaterialTextView android:textAppearance="?textAppearanceHeadlineSmall" android:textColor="@color/white" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/offset_setting" android:layout_weight="1.0" />
+        <com.google.android.material.button.MaterialButton android:textColor="@color/white" android:id="@id/reset" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/danmaku_reset" style="@style/Widget.Material3.Button.TonalButton" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:id="@id/audioSection" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="24.0dip" android:paddingTop="4.0dip" android:paddingRight="24.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="24.0dip" android:paddingVertical="4.0dip">
+            <com.google.android.material.textview.MaterialTextView android:textAppearance="?textAppearanceBodyLarge" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/offset_audio" android:layout_weight="1.0" />
+            <com.google.android.material.textview.MaterialTextView android:textAppearance="?textAppearanceBodyMedium" android:textColor="@color/white" android:id="@id/audioValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.slider.Slider android:id="@id/audioSlider" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:stepSize="100.0" android:valueFrom="-10000" android:valueTo="10000" android:layout_marginHorizontal="12.0dip" app:tickVisible="false" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat android:orientation="vertical" android:id="@id/textSection" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="24.0dip" android:paddingTop="4.0dip" android:paddingRight="24.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="24.0dip" android:paddingVertical="4.0dip">
+            <com.google.android.material.textview.MaterialTextView android:textAppearance="?textAppearanceBodyLarge" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/offset_text" android:layout_weight="1.0" />
+            <com.google.android.material.textview.MaterialTextView android:textAppearance="?textAppearanceBodyMedium" android:textColor="@color/white" android:id="@id/textValue" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <com.google.android.material.slider.Slider android:id="@id/textSlider" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:stepSize="1000.0" android:valueFrom="-300000" android:valueTo="300000" android:layout_marginHorizontal="12.0dip" app:tickVisible="false" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <View android:layout_width="fill_parent" android:layout_height="24.0dip" />
+</androidx.appcompat.widget.LinearLayoutCompat>

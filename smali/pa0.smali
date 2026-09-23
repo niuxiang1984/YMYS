@@ -1,0 +1,195 @@
+.class public final synthetic Lpa0;
+.super Ljava/lang/Object;
+.source "r8-map-id-00a0c95fd430f489eb9124c596f87c5b95e16a2b400a763bc4bdd346b8830e5d"
+
+# interfaces
+.implements Lo33;
+
+
+# instance fields
+.field public final synthetic c:I
+
+.field public final synthetic h:Ljava/lang/Object;
+
+
+# direct methods
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
+    .locals 0
+
+    .line 1
+    iput p2, p0, Lpa0;->c:I
+
+    .line 2
+    .line 3
+    iput-object p1, p0, Lpa0;->h:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public final get()Ljava/lang/Object;
+    .locals 2
+
+    .line 1
+    iget v0, p0, Lpa0;->c:I
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    iget-object p0, p0, Lpa0;->h:Ljava/lang/Object;
+
+    .line 5
+    .line 6
+    packed-switch v0, :pswitch_data_0
+
+    .line 7
+    .line 8
+    .line 9
+    check-cast p0, Lvu2;
+
+    .line 10
+    .line 11
+    invoke-virtual {p0}, Lvu2;->a()Luu2;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object v0
+
+    .line 15
+    iput-object v1, v0, Luu2;->e:Lf82;
+
+    .line 16
+    .line 17
+    iget-object p0, p0, Lvu2;->y:Lm73;
+
+    .line 18
+    .line 19
+    invoke-virtual {p0}, Lm73;->p()Z
+
+    .line 20
+    .line 21
+    .line 22
+    move-result p0
+
+    .line 23
+    if-eqz p0, :cond_0
+
+    .line 24
+    .line 25
+    const/4 p0, 0x4
+
+    .line 26
+    goto :goto_0
+
+    .line 27
+    :cond_0
+    const/4 p0, 0x2
+
+    .line 28
+    :goto_0
+    iput p0, v0, Luu2;->d:I
+
+    .line 29
+    .line 30
+    new-instance p0, Lvu2;
+
+    .line 31
+    .line 32
+    invoke-direct {p0, v0}, Lvu2;-><init>(Luu2;)V
+
+    .line 33
+    .line 34
+    .line 35
+    return-object p0
+
+    .line 36
+    :pswitch_0
+    check-cast p0, Lko0;
+
+    .line 37
+    .line 38
+    return-object p0
+
+    .line 39
+    :pswitch_1
+    check-cast p0, Lnv1;
+
+    .line 40
+    .line 41
+    return-object p0
+
+    .line 42
+    :pswitch_2
+    check-cast p0, Lzb0;
+
+    .line 43
+    .line 44
+    return-object p0
+
+    .line 45
+    :pswitch_3
+    check-cast p0, Ljava/lang/Class;
+
+    .line 46
+    .line 47
+    :try_start_0
+    invoke-virtual {p0, v1}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+
+    .line 48
+    .line 49
+    .line 50
+    move-result-object p0
+
+    .line 51
+    invoke-virtual {p0, v1}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 52
+    .line 53
+    .line 54
+    move-result-object p0
+
+    .line 55
+    check-cast p0, Lgv1;
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 56
+    .line 57
+    return-object p0
+
+    .line 58
+    :catch_0
+    move-exception p0
+
+    .line 59
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    .line 60
+    .line 61
+    invoke-direct {v0, p0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/Throwable;)V
+
+    .line 62
+    .line 63
+    .line 64
+    throw v0
+
+    .line 65
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
