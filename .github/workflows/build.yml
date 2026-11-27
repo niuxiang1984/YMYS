@@ -63,7 +63,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: 构建 ${{ matrix.name }}
-        run: ./gradlew --no-daemon ${{ matrix.task }}
+        run: sh ./gradlew --no-daemon ${{ matrix.task }}
 
       - name: 收集 APK
         run: |
