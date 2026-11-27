@@ -66,9 +66,6 @@ android {
         leanback {
             dimension "mode"
         }
-        mobile {
-            dimension "mode"
-        }
         arm64_v8a {
             dimension "abi"
             ndk { abiFilters "arm64-v8a" }
@@ -82,6 +79,13 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+    }
+
+    // 唱 K 才用的 TensorFlow Lite native 库不进包（代码保留，功能入口后续按 UI 定案处理）
+    packaging {
+        jniLibs {
+            excludes += ["**/libtensorflowlite_jni.so"]
+        }
     }
 
     testOptions {
@@ -161,7 +165,6 @@ androidComponents {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.aar", "*.jar"])
     implementation project(':catvod')
-    implementation project(':chaquo')
     implementation project(':nodejs')
     implementation project(':quickjs')
     // quickjs 模块用 implementation 引入 wrapper，不会向 app 传递；
@@ -205,8 +208,6 @@ dependencies {
     leanbackImplementation libs.leanback
     leanbackImplementation libs.androidautosize
     leanbackImplementation libs.zxing.android.embedded
-    mobileImplementation libs.biometric
-    mobileImplementation libs.zxing.android.embedded
     testImplementation libs.junit
     testImplementation libs.work.testing
     annotationProcessor libs.room.compiler

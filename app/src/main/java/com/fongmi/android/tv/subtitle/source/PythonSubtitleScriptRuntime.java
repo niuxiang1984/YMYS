@@ -1,75 +1,35 @@
 package com.fongmi.android.tv.subtitle.source;
 
-import com.fongmi.chaquo.Loader;
-import com.fongmi.chaquo.Spider;
-
-import java.util.concurrent.ConcurrentHashMap;
-
+/**
+ * Python 字幕脚本运行时已移除（壹米影视 5.9.0 瘦身版）。
+ * 保留类型以维持 SubtitleScriptRuntimeFactory 的形状，
+ * .py 字幕源在调用时直接抛出明确异常，不影响其它字幕源。
+ */
 public final class PythonSubtitleScriptRuntime implements SubtitleScriptRuntime {
 
-    private final Loader loader;
-    private final ConcurrentHashMap<String, Spider> spiders;
-
-    public PythonSubtitleScriptRuntime() {
-        this(new Loader());
-    }
-
-    PythonSubtitleScriptRuntime(Loader loader) {
-        this.loader = loader;
-        this.spiders = new ConcurrentHashMap<>();
+    private static IllegalStateException removed() {
+        return new IllegalStateException("Python 运行时已移除，.py 字幕源不可用");
     }
 
     @Override
     public String init(String sourceKey, String scriptPath, String config) {
-        if (sourceKey == null || sourceKey.isBlank()) {
-            throw new IllegalArgumentException("sourceKey is empty");
-        }
-        if (scriptPath == null || scriptPath.isBlank()) {
-            throw new IllegalArgumentException("scriptPath is empty");
-        }
-        Spider previous = spiders.remove(sourceKey);
-        destroy(previous);
-        Spider spider = loader.spider(scriptPath);
-        spiders.put(sourceKey, spider);
-        try {
-            return spider.subtitleInit(config);
-        } catch (Throwable error) {
-            spiders.remove(sourceKey, spider);
-            destroy(spider);
-            throw error;
-        }
+        throw removed();
     }
 
     @Override
     public String search(String sourceKey, String request) {
-        return require(sourceKey).subtitleSearch(request);
+        throw removed();
     }
 
     @Override
     public String resolve(String sourceKey, String request) {
-        return require(sourceKey).subtitleResolve(request);
+        throw removed();
     }
 
     @Override
     public void destroy(String sourceKey) {
-        destroy(spiders.remove(sourceKey));
     }
 
     public void destroyAll() {
-        for (String sourceKey : spiders.keySet()) destroy(sourceKey);
-    }
-
-    private Spider require(String sourceKey) {
-        Spider spider = spiders.get(sourceKey);
-        if (spider == null) throw new IllegalStateException("Subtitle source is not initialized: " + sourceKey);
-        return spider;
-    }
-
-    private static void destroy(Spider spider) {
-        if (spider == null) return;
-        try {
-            spider.destroy();
-        } catch (Throwable ignored) {
-        }
     }
 }

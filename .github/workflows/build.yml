@@ -20,10 +20,6 @@ jobs:
             task: assembleLeanbackArm64_v8aRelease
           - name: leanback-armeabi-v7a
             task: assembleLeanbackArmeabi_v7aRelease
-          - name: mobile-arm64-v8a
-            task: assembleMobileArm64_v8aRelease
-          - name: mobile-armeabi-v7a
-            task: assembleMobileArmeabi_v7aRelease
     steps:
       - uses: actions/checkout@v4
         with:
