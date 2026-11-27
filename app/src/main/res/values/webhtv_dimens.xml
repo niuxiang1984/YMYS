@@ -23,5 +23,5 @@
         视频层/固定明暗宿主（selector_video_item 等）是另一套语义，见
         docs/TV-FOCUS-RING-20261004-unified-theme-ring.md。
     -->
-    <dimen name="webhtv_focus_ring_width">1.5dp</dimen>
+    <dimen name="webhtv_focus_ring_width">2dp</dimen>
 </resources>

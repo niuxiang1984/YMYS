@@ -47,7 +47,7 @@
         于是 ?attr/tvFocusRing 的全部消费者（选集卡、演员卡、播放页控件、快捷栏…）都跟随
         主题编辑器的焦点色。此前写死 #FFD166，用户改主题时焦点环纹丝不动。
     -->
-    <color name="tv_item_focus_ring">@color/webhtv_color_focus</color>
+    <color name="tv_item_focus_ring">@color/white</color>
     <color name="tv_item_current_ring">#2CC56F</color>
     <color name="tv_item_normal_stroke">#33FFFFFF</color>
     <!--
