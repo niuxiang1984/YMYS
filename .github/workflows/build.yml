@@ -39,7 +39,16 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - uses: android-actions/setup-android@v3
+      # 直接用 runner 预装的 Android SDK（自行接受 licenses）
+      - name: 接受 Android SDK 许可
+        run: |
+          SDK="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
+          echo "SDK=$SDK"
+          mkdir -p "$SDK/licenses"
+          for p in android-sdk-license android-sdk-preview-license; do
+            echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$SDK/licenses/$p"
+          done
+          ls "$SDK"
 
       - uses: gradle/actions/setup-gradle@v4
         with:
@@ -47,7 +56,7 @@ jobs:
 
       - name: 生成 local.properties
         run: |
-          printf 'sdk.dir=%s\nstoreFile=../keystore/yimi.keystore\nkeyAlias=yimi\nstorePassword=yimipass\nkeyPassword=yimipass\n' "$ANDROID_SDK_ROOT" > local.properties
+          printf 'sdk.dir=%s\nstoreFile=../keystore/yimi.keystore\nkeyAlias=yimi\nstorePassword=yimipass\nkeyPassword=yimipass\n' "${ANDROID_HOME:-$ANDROID_SDK_ROOT}" > local.properties
           cat local.properties
 
       - name: 构建 ${{ matrix.name }}
