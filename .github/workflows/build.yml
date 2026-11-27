@@ -1,0 +1,66 @@
+name: Build APK
+
+# 只构建 APK 并作为 Actions Artifact 上传，不创建 Release / Tag。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, base-5.9.0 ]
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: leanback-arm64-v8a
+            task: assembleLeanbackArm64_v8aRelease
+          - name: leanback-armeabi-v7a
+            task: assembleLeanbackArmeabi_v7aRelease
+          - name: mobile-arm64-v8a
+            task: assembleMobileArm64_v8aRelease
+          - name: mobile-armeabi-v7a
+            task: assembleMobileArmeabi_v7aRelease
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Chaquopy 固定构建用 Python 3.10
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: wrapper
+
+      - name: 生成 local.properties
+        run: |
+          printf 'sdk.dir=%s\nstoreFile=../keystore/yimi.keystore\nkeyAlias=yimi\nstorePassword=yimipass\nkeyPassword=yimipass\n' "$ANDROID_SDK_ROOT" > local.properties
+          cat local.properties
+
+      - name: 构建 ${{ matrix.name }}
+        run: ./gradlew --no-daemon ${{ matrix.task }}
+
+      - name: 收集 APK
+        run: |
+          mkdir -p out
+          find app/build/outputs/apk -name "*.apk" -print -exec cp {} out/ \;
+          ls -l out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yimi-tv-5.9.0-${{ matrix.name }}
+          path: out/*.apk
+          retention-days: 30
