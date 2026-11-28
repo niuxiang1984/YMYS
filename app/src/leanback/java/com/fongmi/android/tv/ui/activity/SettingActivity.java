@@ -102,7 +102,7 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     private void setUiStyleText() {
         boolean classic = Prefers.getInt("ui_style", 0) == 1;
         mBinding.uiStyleText.setText(getString(classic ? R.string.setting_ui_style_classic : R.string.setting_ui_style_new));
-        mBinding.classicPersonal.setVisibility(classic ? View.VISIBLE : View.GONE);
+        mBinding.classicPersonal.setVisibility(View.VISIBLE);
     }
 
     private void onUiStyle(View view) {

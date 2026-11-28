@@ -3125,13 +3125,13 @@
     <string name="setting_tmdb_home_clear">清理 TMDB 首页数据</string>
     <string name="setting_tmdb_keep_clear">清理 TMDB 收藏数据</string>
     <string name="setting_tmdb_home_cache_limit">首页海报缓存上限</string>
-    <string name="setting_quick_search">快速搜索</string>
+    <string name="setting_quick_search">手动 TMDB 匹配</string>
     <string name="setting_quick_history">快速历史</string>
-    <string name="setting_history_sticky">历史吸顶</string>
+    <string name="setting_history_sticky">历史常驻</string>
     <string name="setting_wallpaper_mode">壁纸模式</string>
-    <string name="setting_nav_sort">导航排序</string>
-    <string name="setting_optimize_ip">IP 优化</string>
-    <string name="setting_keep_config">收藏配置</string>
+    <string name="setting_nav_sort">导航栏排序</string>
+    <string name="setting_optimize_ip">TMDB图片下载测速</string>
+    <string name="setting_keep_config">收藏站点接口显示</string>
     <string name="setting_speed_test">海报下载速度显示</string>
     <string name="setting_cleared">已清理</string>
     <string name="setting_ip_optimized">已优化 IP 线路</string>
@@ -3144,12 +3144,14 @@
     <string name="setting_ui_style">首页样式</string>
     <string name="setting_ui_style_new">新版</string>
     <string name="setting_ui_style_classic">经典</string>
-    <string name="setting_classic">经典个性化</string>
+    <string name="setting_classic">经典个性设置</string>
     <string name="setting_backup_restore">备份恢复</string>
     <string name="setting_restart">强制重启</string>
 
     <string name="setting_backup_data">备份数据</string>
     <string name="setting_restore_data">恢复数据</string>
     <string name="setting_restarting">正在重启</string>
+
+    <string name="setting_speed_testing">正在测速…</string>
 </resources>
 

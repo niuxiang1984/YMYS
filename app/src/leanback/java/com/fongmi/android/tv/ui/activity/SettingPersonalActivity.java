@@ -26,7 +26,8 @@ public class SettingPersonalActivity extends BaseActivity {
 
     private static final String KEY_CACHE_LIMIT = "poster_home_cache_limit";
     private static final String KEY_SPEED_TEST = "poster_speed_test";
-    private static final String KEY_KEEP_CONFIG = "poster_keep_config";
+    private static final String KEY_KEEP_SITE = "keep_site_show";
+    private static final String KEY_MANUAL_MATCH = "manual_tmdb_match";
     private static final String KEY_QUICK_SEARCH = "poster_quick_search";
     private static final String KEY_QUICK_HISTORY = "poster_quick_history";
     private static final String KEY_HISTORY_STICKY = "poster_history_sticky";
@@ -61,9 +62,9 @@ public class SettingPersonalActivity extends BaseActivity {
         mBinding.tmdbKeepClear.setOnClickListener(v -> clearTmdb(false));
         mBinding.tmdbHomeCacheLimit.setOnClickListener(this::cycleCacheLimit);
         mBinding.speedTest.setOnClickListener(v -> toggle(KEY_SPEED_TEST));
-        mBinding.ipOptimize.setOnClickListener(v -> Notify.show(R.string.setting_ip_optimized));
-        mBinding.keepConfig.setOnClickListener(this::cycleKeepConfig);
-        mBinding.quickSearch.setOnClickListener(v -> toggle(KEY_QUICK_SEARCH));
+        mBinding.ipOptimize.setOnClickListener(v -> Notify.show(R.string.setting_speed_testing));
+        mBinding.keepConfig.setOnClickListener(v -> toggle(KEY_KEEP_SITE));
+        mBinding.quickSearch.setOnClickListener(v -> toggle(KEY_MANUAL_MATCH));
         mBinding.quickHistory.setOnClickListener(v -> toggle(KEY_QUICK_HISTORY));
         mBinding.historySticky.setOnClickListener(v -> toggle(KEY_HISTORY_STICKY));
         mBinding.wallpaperMode.setOnClickListener(v -> SettingAppearanceActivity.start(this));
@@ -76,7 +77,7 @@ public class SettingPersonalActivity extends BaseActivity {
     }
 
     private boolean defaultBool(String key) {
-        return !KEY_QUICK_HISTORY.equals(key);
+        return !KEY_QUICK_HISTORY.equals(key) && !KEY_MANUAL_MATCH.equals(key);
     }
 
     private void cycleCacheLimit(View view) {
@@ -91,23 +92,10 @@ public class SettingPersonalActivity extends BaseActivity {
         Prefers.put(KEY_CACHE_LIMIT, next);
         setText();
     }
-
-    private void cycleKeepConfig(View view) {
-        Prefers.put(KEY_KEEP_CONFIG, (Prefers.getInt(KEY_KEEP_CONFIG, 0) + 1) % 3);
-        setText();
-    }
-
     private void clearTmdb(boolean home) {
         Notify.show(R.string.setting_cleared);
         setText();
     }
-
-    private String getKeepConfigText() {
-        int value = Prefers.getInt(KEY_KEEP_CONFIG, 0);
-        int[] ids = {R.string.setting_keep_config_1, R.string.setting_keep_config_2, R.string.setting_keep_config_3};
-        return getString(ids[Math.max(0, Math.min(value, ids.length - 1))]);
-    }
-
     private String getTmdbKeyText() {
         String key = TmdbConfig.objectFrom(Setting.getTmdbConfig()).getApiKey();
         if (key == null || key.trim().isEmpty()) return getString(R.string.setting_unconfigured);
@@ -130,9 +118,10 @@ public class SettingPersonalActivity extends BaseActivity {
         mBinding.tmdbKeepPosterText.setText("0 条 · 0 张");
         mBinding.tmdbHomeCacheLimitText.setText(String.format(Locale.US, "%d 张", Prefers.getInt(KEY_CACHE_LIMIT, 1000)));
         mBinding.speedTestText.setText(getSwitch(Prefers.getBoolean(KEY_SPEED_TEST, true)));
-        mBinding.keepConfigText.setText(getKeepConfigText());
-        mBinding.quickSearchText.setText(getSwitch(Prefers.getBoolean(KEY_QUICK_SEARCH, true)));
+        mBinding.keepConfigText.setText(getSwitch(Prefers.getBoolean(KEY_KEEP_SITE, true)));
+        mBinding.quickSearchText.setText(getSwitch(Prefers.getBoolean(KEY_MANUAL_MATCH, false)));
         mBinding.quickHistoryText.setText(getSwitch(Prefers.getBoolean(KEY_QUICK_HISTORY, false)));
         mBinding.historyStickyText.setText(getSwitch(Prefers.getBoolean(KEY_HISTORY_STICKY, true)));
     }
 }
+
