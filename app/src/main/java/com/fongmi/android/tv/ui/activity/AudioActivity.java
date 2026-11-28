@@ -964,24 +964,9 @@ public class AudioActivity extends PlaybackActivity {
         int wall = Setting.getWall();
         int type = Setting.getWallType();
 
-        // Built-in color
-        if (type == 0 && Setting.isBuiltInColorWall(wall)) {
-            binding.backdrop.setImageDrawable(new ColorDrawable(Setting.getBuiltInWallColor(wall)));
-            return;
-        }
-
-        // Built-in design
-        if (type == 0 && Setting.isBuiltInDesignWall(wall)) {
-            int resId = CustomWallView.getDesignResId(wall);
-            if (resId != 0) {
-                binding.backdrop.setImageResource(resId);
-                return;
-            }
-        }
-
-        // Green (legacy)
-        if (type == 0 && wall == Setting.WALL_GREEN) {
-            binding.backdrop.setImageResource(R.drawable.wallpaper_1);
+        // 内置壁纸
+        if (type == 0 && Setting.isBuiltInWall(wall)) {
+            binding.backdrop.setImageResource(CustomWallView.getBuiltInRes(wall));
             return;
         }
 
@@ -997,7 +982,7 @@ public class AudioActivity extends PlaybackActivity {
         }
 
         // Fallback
-        binding.backdrop.setImageResource(R.drawable.wallpaper_4);
+        binding.backdrop.setImageResource(R.drawable.bg_default_wall);
     }
 
     private void updatePlayIcon() {

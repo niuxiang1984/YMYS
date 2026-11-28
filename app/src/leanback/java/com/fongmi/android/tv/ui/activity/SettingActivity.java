@@ -477,7 +477,7 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     }
 
     private void setWallText() {
-        mBinding.wallUrl.setText(Setting.getWallDesc(WallConfig.getDesc()));
+        mBinding.wallUrl.setText(WallConfig.getDesc());
     }
 
 }

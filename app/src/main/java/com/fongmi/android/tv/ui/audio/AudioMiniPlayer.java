@@ -401,7 +401,7 @@ public final class AudioMiniPlayer implements ServiceConnection {
         loadedPic = state.pic;
         if (TextUtils.isEmpty(state.pic)) {
             cover.setImageResource(R.drawable.ic_audio_note);
-            backdrop.setImageResource(R.drawable.wallpaper_4);
+            backdrop.setImageResource(R.drawable.bg_default_wall);
         } else {
             ImgUtil.load(state.displayTitle(), state.pic, cover);
             ImgUtil.load(state.displayTitle(), state.pic, backdrop);

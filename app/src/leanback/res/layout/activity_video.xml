@@ -25,11 +25,12 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
-        <com.fongmi.android.tv.ui.custom.ContextWallImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/contextWall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
             android:visibility="gone" />
 
         <!-- 渐变遮罩 -->

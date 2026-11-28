@@ -67,7 +67,7 @@ public class SettingPersonalActivity extends BaseActivity {
         mBinding.quickSearch.setOnClickListener(v -> toggle(KEY_MANUAL_MATCH));
         mBinding.quickHistory.setOnClickListener(v -> toggle(KEY_QUICK_HISTORY));
         mBinding.historySticky.setOnClickListener(v -> toggle(KEY_HISTORY_STICKY));
-        mBinding.wallpaperMode.setOnClickListener(v -> SettingAppearanceActivity.start(this));
+        mBinding.wallpaperMode.setOnClickListener(v -> SettingWallpaperActivity.start(this));
         mBinding.navSort.setOnClickListener(v -> HomeButtonDialog.show(this, this::setText));
     }
 

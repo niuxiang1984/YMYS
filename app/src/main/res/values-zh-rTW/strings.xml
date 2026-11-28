@@ -3024,6 +3024,10 @@
     <string name="setting_quick_history">快速历史</string>
     <string name="setting_history_sticky">历史常驻</string>
     <string name="setting_wallpaper_mode">壁纸模式</string>
+    <string name="wallpaper_switch">壁纸开关</string>
+    <string name="wallpaper_enter">进入时间</string>
+    <string name="wallpaper_interval">间隔时间</string>
+    <string name="wallpaper_never">无穷</string>
     <string name="setting_nav_sort">导航栏排序</string>
     <string name="setting_optimize_ip">TMDB图片下载测速</string>
     <string name="setting_keep_config">收藏站点接口显示</string>
