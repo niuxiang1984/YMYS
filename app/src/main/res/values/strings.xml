@@ -205,7 +205,7 @@
     <string name="setting_ai_group_recommendation">Recommendations</string>
     <string name="setting_ai_group_detection">Content detection</string>
     <string name="setting_ai_group_subtitle">Subtitles</string>
-    <string name="setting_personal">Personal</string>
+    <string name="setting_personal">海报个性设置</string>
     <string name="setting_group_rule">Group rules</string>
     <string name="setting_group_rule_summary">Enabled %1$d / %2$d</string>
     <string name="group_rule_add">Add rule</string>
@@ -3138,5 +3138,18 @@
     <string name="setting_keep_config_1">海报与日历</string>
     <string name="setting_keep_config_2">仅海报</string>
     <string name="setting_keep_config_3">仅日历</string>
+
+    <!-- 主设置页（对齐 5.5.6-9 截图） -->
+    <string name="setting_personalized">个性化与智能</string>
+    <string name="setting_ui_style">首页样式</string>
+    <string name="setting_ui_style_new">新版</string>
+    <string name="setting_ui_style_classic">经典</string>
+    <string name="setting_classic">经典个性化</string>
+    <string name="setting_backup_restore">备份恢复</string>
+    <string name="setting_restart">强制重启</string>
+
+    <string name="setting_backup_data">备份数据</string>
+    <string name="setting_restore_data">恢复数据</string>
+    <string name="setting_restarting">正在重启</string>
 </resources>
 

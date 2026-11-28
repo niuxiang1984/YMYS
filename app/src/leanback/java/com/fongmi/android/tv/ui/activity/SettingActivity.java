@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.viewbinding.ViewBinding;
 
 import com.fongmi.android.tv.R;
@@ -43,7 +44,9 @@ import com.fongmi.android.tv.utils.FileUtil;
 import com.fongmi.android.tv.utils.Notify;
 import com.fongmi.android.tv.utils.PermissionUtil;
 import com.github.catvod.bean.Doh;
+import com.github.catvod.crawler.DebugLogStore;
 import com.github.catvod.net.OkHttp;
+import com.github.catvod.utils.Prefers;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -92,6 +95,49 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     private void setOtherText() {
         mBinding.dohText.setText(getDohList()[getDohIndex()]);
         mBinding.incognitoText.setText(getSwitch(Setting.isIncognito()));
+        setUiStyleText();
+        mBinding.debugLogText.setText(getSwitch(DebugLogStore.isEnabled()));
+    }
+
+    private void setUiStyleText() {
+        boolean classic = Prefers.getInt("ui_style", 0) == 1;
+        mBinding.uiStyleText.setText(getString(classic ? R.string.setting_ui_style_classic : R.string.setting_ui_style_new));
+        mBinding.classicPersonal.setVisibility(classic ? View.VISIBLE : View.GONE);
+    }
+
+    private void onUiStyle(View view) {
+        Prefers.put("ui_style", Prefers.getInt("ui_style", 0) == 0 ? 1 : 0);
+        setUiStyleText();
+    }
+
+    private void onClassicPersonal(View view) {
+        SettingEnhanceActivity.start(this);
+    }
+
+    private void onDebugLog(View view) {
+        DebugLogStore.setEnabled(!DebugLogStore.isEnabled());
+        mBinding.debugLogText.setText(getSwitch(DebugLogStore.isEnabled()));
+    }
+
+    private void onBackupRestore(View view) {
+        String[] items = {getString(R.string.setting_backup_data), getString(R.string.setting_restore_data)};
+        new AlertDialog.Builder(this).setItems(items, (dialog, which) -> {
+            if (which == 0) onBackup(view);
+            else onRestore(view);
+        }).show();
+    }
+
+    private void onRestart(View view) {
+        Notify.show(R.string.setting_restarting);
+        Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+        if (intent != null) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+        new android.os.Handler(getMainLooper()).postDelayed(() -> {
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(0);
+        }, 1200);
     }
 
     private void setCacheText() {
@@ -127,7 +173,8 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
         // The row stays single-line by user request, so §15.2's "not long-press only" intent is a
         // recorded deviation rather than a printed hint (docs/CACHE-MGMT-01-cache-management-design.md).
         mBinding.cache.setOnLongClickListener(this::onCacheManage);
-        mBinding.backup.setOnClickListener(this::onBackup);
+        mBinding.backupRestore.setOnClickListener(this::onBackupRestore);
+        mBinding.restart.setOnClickListener(this::onRestart);
         mBinding.enhance.setOnClickListener(this::onEnhance);
         mBinding.tmdb.setOnClickListener(this::onTmdb);
         mBinding.ai.setOnClickListener(this::onAi);
@@ -135,9 +182,10 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
         mBinding.player.setOnClickListener(this::onPlayer);
         mBinding.danmaku.setOnClickListener(this::onDanmaku);
         mBinding.subtitle.setOnClickListener(this::onSubtitle);
-        mBinding.appearance.setOnClickListener(this::onAppearance);
+        mBinding.uiStyle.setOnClickListener(this::onUiStyle);
+        mBinding.classicPersonal.setOnClickListener(this::onClassicPersonal);
+        mBinding.debugLog.setOnClickListener(this::onDebugLog);
         mBinding.personal.setOnClickListener(this::onPersonal);
-        mBinding.restore.setOnClickListener(this::onRestore);
         mBinding.version.setOnClickListener(this::onVersion);
         mBinding.vodHome.setOnClickListener(this::onVodHome);
         mBinding.liveHome.setOnClickListener(this::onLiveHome);
