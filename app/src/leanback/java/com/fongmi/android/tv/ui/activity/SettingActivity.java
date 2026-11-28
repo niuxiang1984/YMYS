@@ -111,20 +111,12 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     }
 
     private void onClassicPersonal(View view) {
-        SettingEnhanceActivity.start(this);
+        SettingClassicActivity.start(this);
     }
 
     private void onDebugLog(View view) {
         DebugLogStore.setEnabled(!DebugLogStore.isEnabled());
         mBinding.debugLogText.setText(getSwitch(DebugLogStore.isEnabled()));
-    }
-
-    private void onBackupRestore(View view) {
-        String[] items = {getString(R.string.setting_backup_data), getString(R.string.setting_restore_data)};
-        new AlertDialog.Builder(this).setItems(items, (dialog, which) -> {
-            if (which == 0) onBackup(view);
-            else onRestore(view);
-        }).show();
     }
 
     private void onRestart(View view) {
@@ -173,12 +165,8 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
         // The row stays single-line by user request, so §15.2's "not long-press only" intent is a
         // recorded deviation rather than a printed hint (docs/CACHE-MGMT-01-cache-management-design.md).
         mBinding.cache.setOnLongClickListener(this::onCacheManage);
-        mBinding.backupRestore.setOnClickListener(this::onBackupRestore);
+        mBinding.backupRestore.setOnClickListener(v -> SettingBackupActivity.start(this));
         mBinding.restart.setOnClickListener(this::onRestart);
-        mBinding.enhance.setOnClickListener(this::onEnhance);
-        mBinding.tmdb.setOnClickListener(this::onTmdb);
-        mBinding.ai.setOnClickListener(this::onAi);
-        mBinding.ad.setOnClickListener(this::onAd);
         mBinding.player.setOnClickListener(this::onPlayer);
         mBinding.danmaku.setOnClickListener(this::onDanmaku);
         mBinding.subtitle.setOnClickListener(this::onSubtitle);
@@ -291,22 +279,6 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
         SettingPlayerActivity.start(this);
     }
 
-    private void onEnhance(View view) {
-        SettingEnhanceActivity.start(this);
-    }
-
-    private void onTmdb(View view) {
-        SettingTmdbActivity.start(this);
-    }
-
-    private void onAi(View view) {
-        SettingAiActivity.start(this);
-    }
-
-    private void onAd(View view) {
-        SettingAdActivity.start(this);
-    }
-
     private void onDanmaku(View view) {
         SettingDanmakuActivity.start(this);
     }
@@ -401,50 +373,6 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
         return true;
     }
 
-    private void onBackup(View view) {
-        PermissionUtil.requestFile(this, allGranted -> {
-            if (!allGranted) {
-                Notify.show(R.string.backup_permission_denied);
-                return;
-            }
-            BackupProgressDialog progress = BackupProgressDialog.open(getSupportFragmentManager(), "备份应用数据");
-            AppDatabase.backup(new Callback() {
-                @Override
-                public void success() {
-                    progress.finish();
-                    Notify.show(R.string.backup_success);
-                }
-
-                @Override
-                public void error() {
-                    progress.finish();
-                    Notify.show(R.string.backup_fail);
-                }
-            }, progress::update);
-        });
-    }
-
-    private void onRestore(View view) {
-        PermissionUtil.requestFile(this, allGranted -> {
-            if (!allGranted) {
-                Notify.show(R.string.backup_permission_denied);
-                return;
-            }
-            RestoreDialog.create().callback(new Callback() {
-                @Override
-                public void success() {
-                    Notify.show(R.string.restore_success);
-                    setOtherText();
-                }
-
-                @Override
-                public void error() {
-                    Notify.show(R.string.restore_fail);
-                }
-            }).show(this);
-        });
-    }
-
     private void initConfig() {
         VodConfig.get().init().load(getCallback());
         LiveConfig.get().init().load();
@@ -481,3 +409,5 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     }
 
 }
+
+

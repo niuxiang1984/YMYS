@@ -56,7 +56,7 @@ public class SettingPersonalActivity extends BaseActivity {
 
     @Override
     protected void initEvent() {
-        mBinding.themeColor.setOnClickListener(v -> SettingAppearanceActivity.start(this));
+        mBinding.themeColor.setOnClickListener(v -> SettingClassicActivity.showColorDialog(this, this::setText));
         mBinding.tmdbKey.setOnClickListener(v -> SettingTmdbActivity.start(this));
         mBinding.tmdbHomeClear.setOnClickListener(v -> clearTmdb(true));
         mBinding.tmdbKeepClear.setOnClickListener(v -> clearTmdb(false));

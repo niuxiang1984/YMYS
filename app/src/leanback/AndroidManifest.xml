@@ -240,20 +240,12 @@
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:screenOrientation="sensorLandscape" />
 
-        <activity
-            android:name=".ui.activity.SettingEnhanceActivity"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:screenOrientation="sensorLandscape" />
 
         <activity
             android:name=".ui.activity.SettingTmdbActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:screenOrientation="sensorLandscape" />
 
-        <activity
-            android:name=".ui.activity.SettingAiActivity"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:screenOrientation="sensorLandscape" />
 
        <activity
            android:name=".ui.activity.SettingPersonalActivity"
@@ -269,7 +261,11 @@
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:screenOrientation="sensorLandscape" />
         <activity
-            android:name=".ui.activity.SettingAdActivity"
+            android:name=".ui.activity.SettingBackupActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name=".ui.activity.SettingClassicActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
             android:screenOrientation="sensorLandscape" />
 
@@ -304,3 +300,5 @@
 
     </application>
 </manifest>
+
+

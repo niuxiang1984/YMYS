@@ -38,9 +38,9 @@ import pl.droidsonroids.gif.GifDrawable;
 
 public class CustomWallView extends FrameLayout implements DefaultLifecycleObserver {
 
-    // TVBox 原始形态：0 = 跟随配置壁纸，其余为内置壁纸
-    private static final int[] WALL_PAPERS = {0, R.drawable.bg_default_wall, R.drawable.wallpaper_1};
-    private static final int[] WALL_COLORS = {0, 0xFF1B2430, 0xFF141216};
+    // TVBox 原始形态：0 = 跟随配置壁纸，1 = 内置壹米壁纸（电影海报墙）
+    private static final int[] WALL_PAPERS = {0, R.drawable.bg_default_wall};
+    private static final int[] WALL_COLORS = {0, 0xFF1B2430};
     private static final int TYPE_RES = 0;
     private static final int TYPE_GIF = 1;
     private static final int TYPE_VIDEO = 2;

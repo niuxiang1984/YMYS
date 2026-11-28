@@ -115,15 +115,14 @@ public class Setting {
     public static final int UI_SCALE_LARGEST = 8;
     private static final int[] UI_SCALE_OPTIONS = {UI_SCALE_FOLLOW_SYSTEM, UI_SCALE_SMALLER, UI_SCALE_MORE_COMPACT, UI_SCALE_COMPACT, UI_SCALE_MILD_COMPACT, UI_SCALE_STANDARD, UI_SCALE_LARGE, UI_SCALE_LARGER, UI_SCALE_LARGEST};
 
-    // 壁纸：0 = 跟随配置壁纸，1 = 内置壹米壁纸，2 = 内置 wallpaper_1
+    // 壁纸：0 = 跟随配置壁纸，1 = 内置壹米壁纸（电影海报墙）
     public static final int WALL_PAPER_YIMI_BG = 1;
-    public static final int WALL_PAPER_YIMI_MAIN = 2;
 
     private static final int MIN_WALL = 0;
-    private static final int MAX_WALL = 2;
+    private static final int MAX_WALL = 1;
     private static final int MIN_WALL_TYPE = 0;
     private static final int MAX_WALL_TYPE = 2;
-    private static final int[] DEFAULT_WALLS = {WALL_PAPER_YIMI_BG, WALL_PAPER_YIMI_MAIN};
+    private static final int[] DEFAULT_WALLS = {WALL_PAPER_YIMI_BG};
 
     public static String getDoh() {
         return Prefers.getString("doh");
@@ -219,11 +218,11 @@ public class Setting {
 
     public static int getBuiltInWallColor(int wall) {
         // 仅作主题取色的兜底值：实际颜色由 CustomWallView 的 Palette 采样写入 wall_color
-        return wall == WALL_PAPER_YIMI_MAIN ? 0xFF141216 : 0xFF1B2430;
+        return 0xFF1B2430;
     }
 
     public static String getBuiltInWallName(int wall) {
-        return wall == WALL_PAPER_YIMI_MAIN ? "壹米壁纸" : "默认壁纸";
+        return "壹米壁纸";
     }
 
     public static boolean isWallpaperMode() {
