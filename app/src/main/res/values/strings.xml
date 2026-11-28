@@ -3119,4 +3119,24 @@
     <string name="plugin_manager_perm_episode_data">Episode data (plugin.data.episode)</string>
     <string name="plugin_panel_title">Plugin panel</string>
     <string name="crash_action_failed">Action failed. Please try again.</string>
+
+    <!-- 海报个性设置 -->
+    <string name="setting_tmdb_key">TMDB Key</string>
+    <string name="setting_tmdb_home_clear">清理 TMDB 首页数据</string>
+    <string name="setting_tmdb_keep_clear">清理 TMDB 收藏数据</string>
+    <string name="setting_tmdb_home_cache_limit">首页海报缓存上限</string>
+    <string name="setting_quick_search">快速搜索</string>
+    <string name="setting_quick_history">快速历史</string>
+    <string name="setting_history_sticky">历史吸顶</string>
+    <string name="setting_wallpaper_mode">壁纸模式</string>
+    <string name="setting_nav_sort">导航排序</string>
+    <string name="setting_optimize_ip">IP 优化</string>
+    <string name="setting_keep_config">收藏配置</string>
+    <string name="setting_speed_test">海报下载速度显示</string>
+    <string name="setting_cleared">已清理</string>
+    <string name="setting_ip_optimized">已优化 IP 线路</string>
+    <string name="setting_keep_config_1">海报与日历</string>
+    <string name="setting_keep_config_2">仅海报</string>
+    <string name="setting_keep_config_3">仅日历</string>
 </resources>
+

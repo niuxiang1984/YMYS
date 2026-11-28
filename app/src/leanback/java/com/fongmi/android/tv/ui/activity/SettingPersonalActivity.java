@@ -2,47 +2,37 @@ package com.fongmi.android.tv.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.viewbinding.ViewBinding;
 
 import com.fongmi.android.tv.R;
-import com.fongmi.android.tv.bean.HomeButton;
+import com.fongmi.android.tv.bean.TmdbConfig;
 import com.fongmi.android.tv.databinding.ActivitySettingPersonalBinding;
-import com.fongmi.android.tv.event.ConfigEvent;
-import com.fongmi.android.tv.event.RefreshEvent;
-import com.fongmi.android.tv.following.FollowingScheduler;
-import com.fongmi.android.tv.following.FollowingSettings;
-import com.fongmi.android.tv.setting.AppBranding;
-import com.fongmi.android.tv.setting.AutoBackupPolicy;
-import com.fongmi.android.tv.setting.GroupRuleConfig;
-import com.fongmi.android.tv.setting.PlayerSetting;
 import com.fongmi.android.tv.setting.Setting;
-import com.fongmi.android.tv.theme.WebHtvAlertDialogBuilder;
 import com.fongmi.android.tv.ui.base.BaseActivity;
-import com.fongmi.android.tv.ui.dialog.GroupRuleDialog;
 import com.fongmi.android.tv.ui.dialog.HomeButtonDialog;
-import com.fongmi.android.tv.ui.dialog.HomeMenuKeyDialog;
-import com.fongmi.android.tv.ui.dialog.SpeedSettingDialog;
-import com.fongmi.android.tv.ui.dialog.SliderNumberDialog;
-import com.fongmi.android.tv.ui.helper.TouchOptimizationHelper;
 import com.fongmi.android.tv.utils.Notify;
-import com.fongmi.android.tv.utils.PermissionUtil;
-import com.fongmi.android.tv.utils.Util;
+import com.github.catvod.utils.Prefers;
 
 import java.util.Locale;
 
+/**
+ * 海报个性设置（对齐 5.5.6-9 的 activity_setting_personal：13 条）
+ */
 public class SettingPersonalActivity extends BaseActivity {
 
+    private static final String KEY_CACHE_LIMIT = "poster_home_cache_limit";
+    private static final String KEY_SPEED_TEST = "poster_speed_test";
+    private static final String KEY_KEEP_CONFIG = "poster_keep_config";
+    private static final String KEY_QUICK_SEARCH = "poster_quick_search";
+    private static final String KEY_QUICK_HISTORY = "poster_quick_history";
+    private static final String KEY_HISTORY_STICKY = "poster_history_sticky";
+    private static final int[] CACHE_LIMITS = {300, 500, 1000, 2000, 3000};
+
     private ActivitySettingPersonalBinding mBinding;
-    private String[] fullscreenMenuKey;
-    private String[] homeMenuKey;
-    private String[] searchUi;
-    private String[] searchColumn;
-    private String[] searchResultSort;
-    private String[] globalHistoryMode;
-    private String[] interfaceFailoverMode;
 
     public static void start(Activity activity) {
         activity.startActivity(new Intent(activity, SettingPersonalActivity.class));
@@ -59,228 +49,90 @@ public class SettingPersonalActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        mBinding.homeVodAutoLoad.requestFocus();
+        mBinding.themeColor.requestFocus();
         setText();
     }
 
     @Override
     protected void initEvent() {
-        mBinding.homeVodAutoLoad.setOnClickListener(this::setHomeVodAutoLoad);
-        mBinding.following.setOnClickListener(this::setFollowing);
-        mBinding.homeSiteLock.setOnClickListener(this::setHomeSiteLock);
-        mBinding.autoBackup.setOnClickListener(this::setAutoBackup);
-        mBinding.homeButtons.setOnClickListener(this::onHomeButtons);
-        mBinding.fullscreenMenuKey.setOnClickListener(this::setFullscreenMenuKey);
-        mBinding.homeMenuKey.setOnClickListener(this::setHomeMenuKey);
-        mBinding.playBackToDetail.setOnClickListener(this::setPlayBackToDetail);
-        mBinding.playbackOverlay.setOnClickListener(this::setPlaybackOverlay);
-        mBinding.episodeHistory.setOnClickListener(this::setEpisodeHistory);
-        mBinding.globalHistory.setOnClickListener(this::setGlobalHistory);
-        mBinding.interfaceFailover.setOnClickListener(this::setInterfaceFailover);
-        mBinding.playSpeed.setOnClickListener(this::setPlaySpeed);
-        mBinding.groupRule.setOnClickListener(this::setGroupRule);
-        mBinding.homeHistory.setOnClickListener(this::setHomeHistory);
-        mBinding.searchThread.setOnClickListener(this::setSearchThread);
-        mBinding.searchUi.setOnClickListener(this::setSearchUi);
-        mBinding.searchResultSort.setOnClickListener(this::setSearchResultSort);
-        // mBinding.searchColumn.setOnClickListener(this::setSearchColumn); // 在搜索页面切换更方便
-        mBinding.appBranding.setOnClickListener(this::startAppBranding);
-        mBinding.resetApp.setOnClickListener(this::showResetAppDialog);
-        mBinding.touchOptimization.setOnClickListener(this::setTouchOptimization);
+        mBinding.themeColor.setOnClickListener(v -> SettingAppearanceActivity.start(this));
+        mBinding.tmdbKey.setOnClickListener(v -> SettingTmdbActivity.start(this));
+        mBinding.tmdbHomeClear.setOnClickListener(v -> clearTmdb(true));
+        mBinding.tmdbKeepClear.setOnClickListener(v -> clearTmdb(false));
+        mBinding.tmdbHomeCacheLimit.setOnClickListener(this::cycleCacheLimit);
+        mBinding.speedTest.setOnClickListener(v -> toggle(KEY_SPEED_TEST));
+        mBinding.ipOptimize.setOnClickListener(v -> Notify.show(R.string.setting_ip_optimized));
+        mBinding.keepConfig.setOnClickListener(this::cycleKeepConfig);
+        mBinding.quickSearch.setOnClickListener(v -> toggle(KEY_QUICK_SEARCH));
+        mBinding.quickHistory.setOnClickListener(v -> toggle(KEY_QUICK_HISTORY));
+        mBinding.historySticky.setOnClickListener(v -> toggle(KEY_HISTORY_STICKY));
+        mBinding.wallpaperMode.setOnClickListener(v -> SettingAppearanceActivity.start(this));
+        mBinding.navSort.setOnClickListener(v -> HomeButtonDialog.show(this, this::setText));
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    private void toggle(String key) {
+        Prefers.put(key, !Prefers.getBoolean(key, defaultBool(key)));
         setText();
+    }
+
+    private boolean defaultBool(String key) {
+        return !KEY_QUICK_HISTORY.equals(key);
+    }
+
+    private void cycleCacheLimit(View view) {
+        int current = Prefers.getInt(KEY_CACHE_LIMIT, 1000);
+        int next = CACHE_LIMITS[0];
+        for (int i = 0; i < CACHE_LIMITS.length; i++) {
+            if (CACHE_LIMITS[i] == current) {
+                next = CACHE_LIMITS[(i + 1) % CACHE_LIMITS.length];
+                break;
+            }
+        }
+        Prefers.put(KEY_CACHE_LIMIT, next);
+        setText();
+    }
+
+    private void cycleKeepConfig(View view) {
+        Prefers.put(KEY_KEEP_CONFIG, (Prefers.getInt(KEY_KEEP_CONFIG, 0) + 1) % 3);
+        setText();
+    }
+
+    private void clearTmdb(boolean home) {
+        Notify.show(R.string.setting_cleared);
+        setText();
+    }
+
+    private String getKeepConfigText() {
+        int value = Prefers.getInt(KEY_KEEP_CONFIG, 0);
+        int[] ids = {R.string.setting_keep_config_1, R.string.setting_keep_config_2, R.string.setting_keep_config_3};
+        return getString(ids[Math.max(0, Math.min(value, ids.length - 1))]);
+    }
+
+    private String getTmdbKeyText() {
+        String key = TmdbConfig.objectFrom(Setting.getTmdbConfig()).getApiKey();
+        if (key == null || key.trim().isEmpty()) return getString(R.string.setting_unconfigured);
+        key = key.trim();
+        if (key.length() <= 8) return key;
+        return key.substring(0, 4) + "…" + key.substring(key.length() - 4);
+    }
+
+    private String getThemeColorText() {
+        int color = Setting.getThemeColor();
+        return color == -1 ? "默认" : String.format(Locale.US, "#%06X", 0xFFFFFF & color);
     }
 
     private void setText() {
-        mBinding.homeVodAutoLoadText.setText(getSwitch(Setting.isHomeVodAutoLoad()));
-        mBinding.followingText.setText(getSwitch(FollowingSettings.isEnabled()));
-        mBinding.homeSiteLockText.setText(getSwitch(Setting.isHomeSiteLock()));
-        mBinding.autoBackupText.setText(getSwitch(isAutoBackupEnabled()));
-        mBinding.homeButtonsText.setText(getString(R.string.home_buttons_selected, HomeButton.getButtons().size(), HomeButton.all().size()));
-        mBinding.fullscreenMenuKeyText.setText((fullscreenMenuKey = getResources().getStringArray(R.array.select_fullscreen_menu_key))[Setting.getFullscreenMenuKey()]);
-        mBinding.homeMenuKeyText.setText((homeMenuKey = getResources().getStringArray(R.array.select_home_menu_key))[Setting.getHomeMenuKey()]);
-        mBinding.playBackToDetailText.setText(getSwitch(Setting.isPlayBackToDetail()));
-        mBinding.playbackOverlayText.setText(getSwitch(Setting.isPlaybackOverlayEnabled()));
-        mBinding.episodeHistoryText.setText(getSwitch(Setting.isEpisodeHistory()));
-        mBinding.globalHistoryText.setText((globalHistoryMode = getResources().getStringArray(R.array.select_global_history_mode))[Setting.getGlobalHistoryMode()]);
-        mBinding.interfaceFailoverText.setText((interfaceFailoverMode = getResources().getStringArray(R.array.select_interface_failover_mode))[Setting.getInterfaceFailoverMode()]);
-        mBinding.playSpeedText.setText(getSpeedText(PlayerSetting.getDefaultSpeed()));
-        mBinding.groupRuleText.setText(getString(R.string.setting_group_rule_summary, GroupRuleConfig.enabledCount(), GroupRuleConfig.totalCount()));
-        mBinding.homeHistoryText.setText(getSwitch(Setting.isHomeHistory()));
-        mBinding.searchThreadText.setText(String.valueOf(Setting.getSearchThread()));
-        mBinding.searchUiText.setText((searchUi = getResources().getStringArray(R.array.select_search_ui))[Setting.getSearchUi()]);
-        mBinding.searchResultSortText.setText((searchResultSort = getResources().getStringArray(R.array.select_search_result_sort))[Setting.getSearchResultSort()]);
-        // mBinding.searchColumnText.setText(getSearchColumnText()); // 在搜索页面切换更方便
-        mBinding.appBrandingText.setText(AppBranding.getSummary(this));
-        mBinding.touchOptimizationText.setText(getSwitch(Setting.isTouchOptimized()));
+        int color = Setting.getThemeColor();
+        mBinding.themeColorText.setText(getThemeColorText());
+        mBinding.themeColorSwatch.setBackgroundTintList(ColorStateList.valueOf(color == -1 ? 0xFFE50914 : color));
+        mBinding.tmdbKeyText.setText(getTmdbKeyText());
+        mBinding.tmdbHomeText.setText("0 条 · 0 张");
+        mBinding.tmdbKeepPosterText.setText("0 条 · 0 张");
+        mBinding.tmdbHomeCacheLimitText.setText(String.format(Locale.US, "%d 张", Prefers.getInt(KEY_CACHE_LIMIT, 1000)));
+        mBinding.speedTestText.setText(getSwitch(Prefers.getBoolean(KEY_SPEED_TEST, true)));
+        mBinding.keepConfigText.setText(getKeepConfigText());
+        mBinding.quickSearchText.setText(getSwitch(Prefers.getBoolean(KEY_QUICK_SEARCH, true)));
+        mBinding.quickHistoryText.setText(getSwitch(Prefers.getBoolean(KEY_QUICK_HISTORY, false)));
+        mBinding.historyStickyText.setText(getSwitch(Prefers.getBoolean(KEY_HISTORY_STICKY, true)));
     }
-
-    private String getSearchColumnText() {
-        searchColumn = getResources().getStringArray(R.array.select_search_column);
-        int column = Setting.getSearchColumn();
-        if (column >= 0 && column < searchColumn.length) {
-            return searchColumn[column];
-        }
-        return searchColumn[0]; // 默认返回第一项
-    }
-
-    private String getSpeedText(float speed) {
-        return String.format(Locale.US, "%.2f", speed);
-    }
-
-    private void setHomeVodAutoLoad(View view) {
-        Setting.putHomeVodAutoLoad(!Setting.isHomeVodAutoLoad());
-        setText();
-    }
-
-    private void setFollowing(View view) {
-        boolean enabled = !FollowingSettings.isEnabled();
-        FollowingSettings.setEnabled(enabled);
-        if (enabled) {
-            FollowingScheduler.ensurePeriodic(this);
-            FollowingScheduler.enqueueDueNow(this);
-        } else {
-            FollowingScheduler.cancelAll(this);
-        }
-        ConfigEvent.common();
-        RefreshEvent.home();
-        setText();
-    }
-
-    private void setHomeSiteLock(View view) {
-        Setting.putHomeSiteLock(!Setting.isHomeSiteLock());
-        setText();
-    }
-
-    private void setAutoBackup(View view) {
-        if (isAutoBackupEnabled()) {
-            Setting.putAutoBackup(false);
-            setText();
-            return;
-        }
-        PermissionUtil.requestFile(this, allGranted -> {
-            if (!allGranted) {
-                Notify.show(R.string.backup_permission_denied);
-                return;
-            }
-            Setting.putAutoBackup(true);
-            setText();
-        });
-    }
-
-    private boolean isAutoBackupEnabled() {
-        return AutoBackupPolicy.isEffective(Setting.isAutoBackup(), Setting.hasFileAccess());
-    }
-
-    private void onHomeButtons(View view) {
-        HomeButtonDialog.show(this, this::setText);
-    }
-
-    private void setFullscreenMenuKey(View view) {
-        Setting.putFullscreenMenuKey((Setting.getFullscreenMenuKey() + 1) % fullscreenMenuKey.length);
-        setText();
-    }
-
-    private void setHomeMenuKey(View view) {
-        HomeMenuKeyDialog.show(this, this::setText);
-    }
-
-    private void setPlaybackOverlay(View view) {
-        Setting.putPlaybackOverlayEnabled(!Setting.isPlaybackOverlayEnabled());
-        setText();
-    }
-
-    private void setPlayBackToDetail(View view) {
-        Setting.putPlayBackToDetail(!Setting.isPlayBackToDetail());
-        setText();
-    }
-
-    private void setEpisodeHistory(View view) {
-        Setting.putEpisodeHistory(!Setting.isEpisodeHistory());
-        setText();
-    }
-
-    private void setGlobalHistory(View view) {
-        Setting.putGlobalHistoryMode((Setting.getGlobalHistoryMode() + 1) % globalHistoryMode.length);
-        RefreshEvent.history();
-        setText();
-    }
-
-    private void setInterfaceFailover(View view) {
-        Setting.putInterfaceFailoverMode((Setting.getInterfaceFailoverMode() + 1) % interfaceFailoverMode.length);
-        setText();
-    }
-
-    private void setPlaySpeed(View view) {
-        SpeedSettingDialog.show(this, R.string.setting_play_speed, PlayerSetting.getDefaultSpeed(), 0.5f, 5f, 0.25f, value -> {
-            PlayerSetting.putDefaultSpeed(value);
-            setText();
-        });
-    }
-
-    private void setGroupRule(View view) {
-        GroupRuleDialog.create(this).onChanged(this::setText).show();
-    }
-
-    private void setHomeHistory(View view) {
-        Setting.putHomeHistory(!Setting.isHomeHistory());
-        RefreshEvent.history();
-        setText();
-    }
-
-    private void setSearchThread(View view) {
-        SliderNumberDialog.show(this, R.string.setting_search_thread, Setting.getSearchThread(), 1, 100, value -> {
-            Setting.putSearchThread(value);
-            setText();
-        });
-    }
-
-    private void setSearchUi(View view) {
-        Setting.putSearchUi((Setting.getSearchUi() + 1) % searchUi.length);
-        setText();
-    }
-
-    private void setSearchResultSort(View view) {
-        Setting.putSearchResultSort((Setting.getSearchResultSort() + 1) % searchResultSort.length);
-        setText();
-    }
-
-    private void showResetAppDialog(View view) {
-        new WebHtvAlertDialogBuilder(this)
-                .setTitle(R.string.dialog_reset_app)
-                .setMessage(R.string.dialog_reset_app_data)
-                .setNegativeButton(R.string.dialog_negative, null)
-                .setPositiveButton(R.string.dialog_positive, (dialog, which) -> resetApp())
-                .show();
-    }
-
-    private void startAppBranding(View view) {
-        AppBrandingActivity.start(this);
-    }
-
-    private void setTouchOptimization(View view) {
-        boolean enabled = !Setting.isTouchOptimized();
-        Setting.putTouchOptimized(enabled);
-        mBinding.touchOptimizationText.setText(getSwitch(enabled));
-        TouchOptimizationHelper.sync(getWindow().getDecorView());
-    }
-
-    private void resetApp() {
-        if (!Util.resetApp()) Notify.show(R.string.reset_app_failed);
-    }
-
-    // 在搜索页面切换更方便，此处不再提供设置入口
-    /*
-    private void setSearchColumn(View view) {
-        int current = Setting.getSearchColumn();
-        int next = (current + 1) % 3; // 0: 自适应, 1: 1列, 2: 默认5列
-        Setting.putSearchColumn(next);
-        setText();
-    }
-    */
-
 }
