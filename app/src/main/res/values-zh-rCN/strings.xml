@@ -1490,9 +1490,9 @@
     <string name="player_aac_track">AAC优先</string>
     <string name="player_music_notification">音乐后台通知</string>
     <string name="player_audio_book_notification">有声书后台通知</string>
-    <string name="player_adblock">去广告</string>
+    <string name="player_adblock">智能去广</string>
     <string name="player_tunnel">隧道模式</string>
-    <string name="player_buffer">前向缓冲目标</string>
+    <string name="player_buffer">缓冲时间</string>
     <string name="player_buffer_bytes">内存缓冲上限</string>
     <string name="player_back_buffer">已播放数据保留</string>
     <string name="player_cache">HLS 磁盘缓存上限</string>
@@ -3149,6 +3149,15 @@
     <string name="setting_restarting">正在重启</string>
 
     <string name="setting_speed_testing">正在测速…</string>
+    <string name="player_engine">播放引擎</string>
+    <string name="player_decode_setting">解码设置</string>
+    <string name="player_auto_next">提前切集</string>
+    <string name="player_session_progress">本次播放进度</string>
+    <string name="setting_personal_player_control">播放按钮</string>
+    <string name="player_preload_setting">预载设置</string>
+    <string name="player_audio_pass_through">音频直通</string>
+    <string name="setting_personal_interface_control">接口按钮</string>
+    <string name="setting_player_key">播放按键</string>
 </resources>
 
 

@@ -7223,7 +7223,8 @@ private boolean runtimeSourceOnly;
         PlaybackEventCollector.get().onProgress(mHistory, player());
         if (mHistory.canSave() && mHistory.canSync()) syncHistory();
         if (applyAutoIntroSkip()) return;
-        if (mHistory.isEndingReached(position, duration)) {
+        // 提前切集（原件 player_auto_next）：关闭时不按片尾阈值提前跳下一集
+        if (PlayerSetting.isAutoNext() && mHistory.isEndingReached(position, duration)) {
             checkEnded(false);
         }
     }
@@ -7233,7 +7234,8 @@ private boolean runtimeSourceOnly;
         if (hasDiscNavigationTimeline()) return;
         long position = player().getPosition();
         long duration = player().getDuration();
-        if (position > 0) mHistory.setPosition(position);
+        // 本次播放进度（原件 player_session_progress）：关闭时不落库本次位置
+        if (position > 0 && PlayerSetting.isSessionProgress()) mHistory.setPosition(position);
         if (duration > 0) mHistory.setDuration(duration);
         PlaybackEventCollector.get().updateHistory(mHistory);
     }

@@ -3052,6 +3052,15 @@
     <string name="setting_restarting">正在重启</string>
 
     <string name="setting_speed_testing">正在测速…</string>
+    <string name="player_engine">播放引擎</string>
+    <string name="player_decode_setting">解碼設定</string>
+    <string name="player_auto_next">提前切集</string>
+    <string name="player_session_progress">本次播放進度</string>
+    <string name="setting_personal_player_control">播放按鈕</string>
+    <string name="player_preload_setting">預載設定</string>
+    <string name="player_audio_pass_through">音訊直通</string>
+    <string name="setting_personal_interface_control">介面按鈕</string>
+    <string name="setting_player_key">播放按鍵</string>
 </resources>
 
 

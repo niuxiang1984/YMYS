@@ -3162,6 +3162,15 @@
     <string name="setting_restarting">正在重启</string>
 
     <string name="setting_speed_testing">正在测速…</string>
+    <string name="player_engine">Playback engine</string>
+    <string name="player_decode_setting">Decode settings</string>
+    <string name="player_auto_next">Early next episode</string>
+    <string name="player_session_progress">Session progress</string>
+    <string name="setting_personal_player_control">Player buttons</string>
+    <string name="player_preload_setting">Preload settings</string>
+    <string name="player_audio_pass_through">Audio pass-through</string>
+    <string name="setting_personal_interface_control">Interface buttons</string>
+    <string name="setting_player_key">Player keys</string>
 </resources>
 
 

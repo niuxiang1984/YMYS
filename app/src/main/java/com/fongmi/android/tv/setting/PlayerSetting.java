@@ -820,6 +820,22 @@ public class PlayerSetting {
         KernelPerformanceSetting.putPreferAac(getPlayer(), preferAAC);
     }
 
+    public static boolean isAutoNext() {
+        return Prefers.getBoolean("player_auto_next", true);
+    }
+
+    public static void putAutoNext(boolean autoNext) {
+        Prefers.put("player_auto_next", autoNext);
+    }
+
+    public static boolean isSessionProgress() {
+        return Prefers.getBoolean("player_session_progress", true);
+    }
+
+    public static void putSessionProgress(boolean sessionProgress) {
+        Prefers.put("player_session_progress", sessionProgress);
+    }
+
     public static float getSubtitleTextSize() {
         return Prefers.getFloat("subtitle_text_size");
     }
