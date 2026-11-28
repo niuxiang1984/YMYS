@@ -99,8 +99,21 @@ public class ConfigDialog extends BaseAlertDialog {
     @Override
     @NonNull
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        int height = Math.max(1, ResUtil.getScreenHeight(requireContext()) - ResUtil.dp2px(48));
-        Dialog dialog = LightDialog.create(requireContext(), getDialogTitle(), getBinding().getRoot(), 0.95f, 0.95f, 2000, height);
+        Dialog dialog = new Dialog(requireContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(getBinding().getRoot());
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(LightDialog.shell(requireContext()));
+            WindowManager.LayoutParams params = window.getAttributes();
+            params.width = Math.min(Math.round(ResUtil.getScreenWidth(requireContext()) * 0.56f), ResUtil.dp2px(680));
+            params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+            params.gravity = Gravity.CENTER;
+            params.dimAmount = 0.58f;
+            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            window.setAttributes(params);
+            window.setLayout(params.width, params.height);
+        }
         initView();
         initEvent();
         return dialog;
@@ -122,11 +135,12 @@ public class ConfigDialog extends BaseAlertDialog {
         binding.name.setText(config.getName());
         binding.text.setText(url = config.getUrl());
         binding.text.setSelection(TextUtils.isEmpty(url) ? 0 : url.length());
-        binding.addresses.setText(addressesText(config));
         binding.positive.setText(edit ? R.string.dialog_edit : R.string.dialog_positive);
-        binding.code.setImageBitmap(QRCode.getLightBitmap(Server.get().getAddress(4), 200, 0));
+        // 原件二维码是暗底白点，这里按弹窗底色亮度选前后景，保证扫得动。
+        boolean darkPanel = isDarkPanel();
+        binding.code.setImageBitmap(darkPanel ? QRCode.getBitmap(Server.get().getAddress(4), 200, 0) : QRCode.getLightBitmap(Server.get().getAddress(4), 200, 0));
         binding.info.setText(ResUtil.getString(R.string.push_info, Server.get().getAddress()).replace("\uff0c", "\n"));
-        binding.name.post(binding.name::requestFocus);
+        binding.text.post(binding.text::requestFocus);
     }
 
     @Override
@@ -134,8 +148,11 @@ public class ConfigDialog extends BaseAlertDialog {
         binding.choose.setOnClickListener(this::onChoose);
         // 猫源本地包是一整个文件夹（index.js + index.config.js），文件列表选不到目录，
         // 所以单独给一个入口。选 zip 仍走上面那个文件选择。
-        binding.chooseDir.setOnClickListener(this::onChooseDir);
-        binding.chooseDir.setVisibility(type == 0 ? View.VISIBLE : View.GONE);
+        // 猫源本地包是整个文件夹（index.js + index.config.js），文件列表选不到目录，长按「选择」走目录选择。
+        binding.choose.setOnLongClickListener(view -> {
+            onChooseDir(view);
+            return true;
+        });
         binding.positive.setOnClickListener(this::onPositive);
         binding.negative.setOnClickListener(this::onNegative);
         binding.text.addTextChangedListener(new CustomTextListener() {
@@ -219,7 +236,7 @@ public class ConfigDialog extends BaseAlertDialog {
     private void onPositive(View view) {
         String name = binding.name.getText().toString().trim();
         String text = binding.text.getText().toString().trim();
-        Config config = saveConfig(text, name, binding.addresses.getText().toString());
+        Config config = saveConfig(text, name, "");
         if (config == null) {
             Notify.show(R.string.remote_trust_config_url_required);
             binding.text.requestFocus();
@@ -250,6 +267,15 @@ public class ConfigDialog extends BaseAlertDialog {
     }
 
     private List<String> addresses(String primary, String text) {
+        // 小弹窗不再暴露多地址输入框：留空时保留该配置原有地址，避免编辑时被抹掉。
+        if (TextUtils.isEmpty(text)) {
+            List<String> keep = new ArrayList<>();
+            if (config != null) keep.addAll(config.getUrls());
+            if (!keep.isEmpty()) {
+                if (!keep.contains(primary) && !primary.isEmpty()) keep.add(0, primary);
+                return keep;
+            }
+        }
         List<String> result = new ArrayList<>();
         result.add(primary);
         for (String item : text.split("\\R")) if (!TextUtils.isEmpty(item.trim())) result.add(item.trim());
@@ -260,6 +286,12 @@ public class ConfigDialog extends BaseAlertDialog {
         List<String> addresses = new ArrayList<>(config.getUrls());
         addresses.remove(config.getUrl());
         return TextUtils.join("\n", addresses);
+    }
+
+    private boolean isDarkPanel() {
+        int color = com.fongmi.android.tv.theme.ThemeController.current().colorSurfaceContainerHigh();
+        double luminance = (0.2126 * Color.red(color) + 0.7152 * Color.green(color) + 0.0722 * Color.blue(color)) / 255d;
+        return luminance < 0.5;
     }
 
     private void onNegative(View view) {
@@ -277,26 +309,7 @@ public class ConfigDialog extends BaseAlertDialog {
     @Override
     public void onStart() {
         super.onStart();
-        configureWindow();
         EventBus.getDefault().register(this);
-    }
-
-    private void configureWindow() {
-        if (getDialog() == null || getDialog().getWindow() == null) return;
-        Window window = getDialog().getWindow();
-        int screenWidth = ResUtil.getScreenWidth(requireContext());
-        int screenHeight = ResUtil.getScreenHeight(requireContext());
-        int width = screenWidth - ResUtil.dp2px(48);
-        int height = screenHeight - ResUtil.dp2px(48);
-        WindowManager.LayoutParams params = window.getAttributes();
-        params.width = width;
-        params.height = height;
-        params.gravity = Gravity.CENTER;
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.getDecorView().setPadding(0, 0, 0, 0);
-        window.setAttributes(params);
-        window.setLayout(params.width, params.height);
-        expandContentToWindow(width, height);
     }
 
     private void expandContentToWindow(int width, int height) {
@@ -341,7 +354,13 @@ public class ConfigDialog extends BaseAlertDialog {
         App.post(() -> {
             if (activity.isFinishing() || activity.isDestroyed()) return;
             dismissAllowingStateLoss();
-            App.post(() -> ((ConfigListener) activity).setConfig(saveConfig("file:/" + path.replace(Path.rootPath(), ""), binding.name.getText().toString().trim(), binding.addresses.getText().toString())), 100);
+            App.post(() -> ((ConfigListener) activity).setConfig(saveConfig("file:/" + path.replace(Path.rootPath(), ""), binding.name.getText().toString().trim(), "")), 100);
         }, 100);
     });
 }
+
+
+
+
+
+

@@ -35,6 +35,7 @@ import com.fongmi.android.tv.ui.dialog.HistoryDialog;
 import com.fongmi.android.tv.ui.dialog.LiveDialog;
 import com.fongmi.android.tv.ui.dialog.RestoreDialog;
 import com.fongmi.android.tv.ui.dialog.BackupProgressDialog;
+import com.fongmi.android.tv.ui.dialog.ConfigDialog;
 import com.fongmi.android.tv.ui.dialog.SiteDialog;
 import com.fongmi.android.tv.utils.AppVersion;
 import com.fongmi.android.tv.cache.CacheCenter;
@@ -157,9 +158,12 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     @Override
     protected void initEvent() {
         mBinding.vod.setOnClickListener(this::onVod);
+        mBinding.vod.setOnLongClickListener(this::onVodManage);
         mBinding.doh.setOnClickListener(this::setDoh);
         mBinding.live.setOnClickListener(this::onLive);
+        mBinding.live.setOnLongClickListener(this::onLiveManage);
         mBinding.wall.setOnClickListener(this::onWall);
+        mBinding.wall.setOnLongClickListener(this::onWallManage);
         mBinding.cache.setOnClickListener(this::onCacheClear);
         // The plain click restores the pre-split one-key clear; the panel moved to the long press.
         // The row stays single-line by user request, so §15.2's "not long-press only" intent is a
@@ -248,15 +252,30 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     }
 
     private void onVod(View view) {
+        ConfigDialog.create().vod().show(this);
+    }
+
+    private boolean onVodManage(View view) {
         HistoryDialog.create().vod().manage().show(this);
+        return true;
     }
 
     private void onLive(View view) {
+        ConfigDialog.create().live().show(this);
+    }
+
+    private boolean onLiveManage(View view) {
         HistoryDialog.create().live().manage().show(this);
+        return true;
     }
 
     private void onWall(View view) {
+        ConfigDialog.create().wall().show(this);
+    }
+
+    private boolean onWallManage(View view) {
         HistoryDialog.create().wall().manage().show(this);
+        return true;
     }
 
     private void onVodHome(View view) {
@@ -409,5 +428,8 @@ public class SettingActivity extends BaseActivity implements ConfigListener, Sit
     }
 
 }
+
+
+
 
 
