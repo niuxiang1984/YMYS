@@ -12,10 +12,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/Widget.WebHTV.TvGroupHeader"
-            android:layout_marginTop="0dp"
-            android:text="@string/setting_group_sources" />
+        
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -212,9 +209,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/Widget.WebHTV.TvGroupHeader"
-            android:text="@string/setting_group_playback" />
+        
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -352,9 +347,7 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/Widget.WebHTV.TvGroupHeader"
-            android:text="@string/setting_group_personal" />
+        
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -499,9 +492,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/Widget.WebHTV.TvGroupHeader"
-            android:text="@string/setting_group_data" />
+        
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
